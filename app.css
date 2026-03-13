@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color:antiquewhite;
+}
+
+nav ul {
+    list-style-type: none; /* Removes bullet points */
+    overflow: hidden; /* Contains the floated list items */
+    background-color: #333; /* Dark background color */
+    display: flex; /* Uses Flexbox for horizontal layout */
+    align-items: center; /* Centers items vertically */
+    
+}
+
+nav ul li a {
+    display: block; /* Makes the whole link area clickable */
+    color: white; /* White text color */
+    text-align: center;
+    padding: 14px 16px; /* Space around links */
+    text-decoration: none; /* Removes underlines from links */
+    background-color: darkgray;
+    
+}
+
+/* Change background color of links on hover */
+nav ul li a:hover {
+    background-color: #ddd;
+    color: black;
+    background-color: cyan;
+    opacity: 0.2;
+    margin: 3px;
+    margin
+}
+
+/* Add a color to the active/current link */
+nav ul li a.active {
+    background-color: #04AA6D;
+    color: white;
+}
