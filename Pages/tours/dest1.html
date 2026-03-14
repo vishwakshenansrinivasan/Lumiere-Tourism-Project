@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kyoto - Lumiere</title>
+<!-- Tailwind + DaisyUI -->
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+.nav-hidden{
+transform: translateY(-100%);
+}
+</style>
+
+</head>
+<body class="min-h-screen bg-gradient-to-r from-green-950 via-green-800 to-black">
+    <div class="relative h-[60vh] w-full">
+        <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1600&auto=format&fit=crop"
+        alt="Kyoto, Japan"
+        class="w-full h-full object-cover">
+
+        <div class="absolute inset-0 bg-gradient-to-t from-blue-100/50 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 p-10 max-w-7xl mx-auto w-full">
+            <h1 class="text-5xl md:text-7xl font-serif bg-gradient-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent mb-4" style="opacity: 1; transform: none;">Kyoto, Japan</h1>
+            <div class="flex items-center gap-6 font-bold text-black/80">
+                <span class="flex items-center font-bold gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 font-extrabold text-red-500">
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                        <circle cx="12" cy="10" r="3"></circle></svg> Kyoto, Japan</span>
+                        <span class="flex items-center gap-2">
+                            <div class="text-yellow-400 text-2xl font-serif">₹350000.00 / person</div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+    <!-- Glass Navbar -->
+    <div id="navbar"
+    class="navbar fixed top-4 left-1/2 -translate-x-1/2 w-[85%]
+    bg-white/10 backdrop-blur-md border border-white/20
+    rounded-xl shadow-lg px-4 py-0 z-50
+    transition-all duration-300">
+
+    <!-- Logo -->
+    <div class="flex-1">
+        <a href="/index.html" class="text-lg font-semibold text-white hover:text-yellow-500 tracking-wide">
+        Lumiere
+        </a>
+    </div>
+
+    <!-- Menu -->
+    <div class="flex-none">
+        <ul class="menu menu-horizontal px-1 text-sm text-white">
+
+        <li><a href="/index.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Home</a></li>
+
+        <li><a href="/Pages/dashboard.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Dashboard</a></li>
+
+        <li><a href="/Pages/tours.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Tours</a></li>
+
+        <li><a href="/Pages/contact.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Contact</a></li>
+
+        </ul>
+    </div>
+    </div>
+    <script>
+    let prevScroll = window.pageYOffset;
+    const navbar = document.getElementById("navbar");
+
+    window.onscroll = function(){
+
+    let currentScroll = window.pageYOffset;
+
+    if(prevScroll > currentScroll){
+    navbar.classList.remove("nav-hidden");
+    }else{
+    navbar.classList.add("nav-hidden");
+    }
+    if(currentScroll > 50){
+    navbar.classList.add("scale-95");
+    }else{
+    navbar.classList.remove("scale-95");
+    }
+    prevScroll = currentScroll;
+
+    }
+
+    </script>
+
+    <section class="max-w-7xl mx-auto px-8 py-16 text-white">
+
+<!-- Description -->
+<div class="mb-14 max-w-3xl">
+<h2 class="text-3xl font-bold mb-4">About the Journey</h2>
+<p class="text-gray-300 leading-relaxed">
+Explore the cultural heart of Japan with our curated tour of Kyoto’s temples,
+zen gardens, and historic neighborhoods. From ancient shrines to bamboo
+forests, this journey immerses you in the traditions and beauty of Japan.
+</p>
+</div>
+
+<!-- Highlights + Tour Info -->
+<div class="grid md:grid-cols-2 gap-10">
+
+<!-- Highlights Card -->
+<div class="bg-white/10 backdrop-blur-md border border-white/20
+rounded-2xl p-8 shadow-xl">
+
+<h3 class="text-2xl font-bold mb-6 text-yellow-400">
+Tour Highlights
+</h3>
+
+<ul class="space-y-4 text-gray-200">
+
+<li>⛩ Visit the iconic Fushimi Inari Shrine with its thousands of torii gates</li>
+
+<li>🏯 Discover the beauty of Kinkaku-ji (Golden Pavilion)</li>
+
+<li>🎎 Walk through Kyoto’s historic Gion geisha district</li>
+
+<li>🍵 Experience a traditional Japanese tea ceremony</li>
+
+<li>🌿 Explore the Arashiyama Bamboo Grove</li>
+
+</ul>
+
+</div>
+
+<!-- Tour Details Card -->
+<div class="bg-white/10 backdrop-blur-md border border-white/20
+rounded-2xl p-8 shadow-xl">
+
+<h3 class="text-2xl font-bold mb-6 text-yellow-400">
+Tour Details
+</h3>
+
+<div class="space-y-4 text-gray-200">
+
+<p><strong>Duration:</strong> 5 Days / 4 Nights</p>
+
+<p><strong>Price:</strong> ₹3,50,000 per person</p>
+
+<p>
+<strong>Includes:</strong> Accommodation, guided tours,
+entrance tickets, and selected meals.
+</p>
+
+</div>
+
+<!-- Button -->
+<button
+class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
+bg-white/10 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20 hover:box
+rounded-lg font-semibold text-white overflow-hidden
+transition-all duration-500 group " onclick="location.href='/Pages/tours/dest2.html'">
+
+
+<!-- Ripple -->
+<span
+class="absolute top-1/2 left-1/2 w-0 h-0
+bg-black rounded-full
+transform -translate-x-1/2 -translate-y-1/2
+transition-all duration-500
+group-hover:w-[550px] group-hover:h-[500px]">
+</span>
+
+<!-- Left Arrow -->
+<svg
+viewBox="0 0 24 24"
+class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:left-6 group-hover:fill-white"
+xmlns="http://www.w3.org/2000/svg">
+<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
+</svg>
+
+<!-- Text -->
+<span
+class="relative z-10 transition-all duration-500 group-hover:text-white">
+Book This Trip
+</span>
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</body>
+</html>
