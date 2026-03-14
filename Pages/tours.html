@@ -16,6 +16,18 @@
 .nav-hidden{
 transform: translateY(-100%);
 }
+.hover-3d {
+  perspective: 1000px;
+}
+
+.hover-3d .card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.hover-3d:hover .card {
+  transform: rotateX(6deg) rotateY(-6deg) scale(1.03);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
 </style>
 
 </head>
