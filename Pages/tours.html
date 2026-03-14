@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Destinations</title>
+
+<!-- Tailwind + DaisyUI -->
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+.nav-hidden{
+transform: translateY(-100%);
+}
+</style>
+
+</head>
+
+<body class="min-h-screen bg-gradient-to-r from-green-900 via-green-800 to-black">
+
+<!-- Navbar -->
+<!-- Glass Navbar -->
+<div id="navbar"
+class="navbar fixed top-4 left-1/2 -translate-x-1/2 w-[85%]
+bg-white/10 backdrop-blur-md border border-white/20
+rounded-xl shadow-lg px-4 py-0 z-50
+transition-all duration-300">
+
+  <!-- Logo -->
+  <div class="flex-1">
+    <a href="/index.html" class="text-lg font-semibold text-white hover:text-yellow-500 tracking-wide">
+      Lumiere
+    </a>
+  </div>
+
+  <!-- Menu -->
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1 text-sm text-white">
+
+    <li><a href="/index.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Home</a></li>
+
+    <li><a href="/Pages/dashboard.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Dashboard</a></li>
+
+    <li><a href="/Pages/tours.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Tours</a></li>
+
+    <li><a href="/Pages/contact.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Contact</a></li>
+
+    </ul>
+  </div>
+</div>
+<script>
+
+let prevScroll = window.pageYOffset;
+const navbar = document.getElementById("navbar");
+
+window.onscroll = function(){
+
+let currentScroll = window.pageYOffset;
+
+if(prevScroll > currentScroll){
+navbar.classList.remove("nav-hidden");
+}else{
+navbar.classList.add("nav-hidden");
+}
+if(currentScroll > 50){
+navbar.classList.add("scale-95");
+}else{
+navbar.classList.remove("scale-95");
+}
+prevScroll = currentScroll;
+
+}
+
+</script>
+
+
+
+<!-- Page Title -->
+<section class="text-center py-16 text-white">
+
+<h1 class="text-5xl font-bold mb-4">
+Explore Our <span class="text-yellow-400 italic">Journeys</span>
+</h1>
+
+<p class="text-gray-300 text-lg">
+Discover the world's most enchanting places, curated for the modern explorer.
+</p>
+
+</section>
+
+
+<!-- Destinations Grid -->
+<section class="grid md:grid-cols-3 gap-10 px-16 pb-20">
+
+
+<!-- Card 1 -->
+<div class="card bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:-translate-y-2 transition duration-300">
+<figure>
+<img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9"
+class="h-60 w-full object-cover">
+</figure>
+
+<div class="card-body text-white">
+
+<div class="flex justify-between items-center">
+<h2 class="card-title text-2xl font-bold">Kyoto, Japan</h2>
+<span class="text-yellow-400 font-semibold">$2500</span>
+</div>
+
+<p class="text-gray-300 text-sm">📍 Kyoto, Japan</p>
+
+<button class="btn w-full mt-4 bg-white/20 border border-white/30 text-white hover:bg-white/30">
+Book This Trip
+</button>
+
+</div>
+</div>
+
+
+<!-- Card 2 -->
+<div class="card bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+
+<figure>
+<img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470"
+class="h-60 w-full object-cover">
+</figure>
+
+<div class="card-body text-white">
+
+<div class="flex justify-between items-center">
+<h2 class="card-title text-2xl font-bold">Swiss Alps</h2>
+<span class="text-yellow-400 font-semibold">$3200</span>
+</div>
+
+<p class="text-gray-300 text-sm">📍 Switzerland</p>
+
+<button class="btn w-full mt-4 bg-white/20 border border-white/30 text-white hover:bg-white/30">
+Book This Trip
+</button>
+
+</div>
+</div>
+
+
+<!-- Card 3 -->
+<div class="card bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+
+<figure>
+<img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff"
+class="h-60 w-full object-cover">
+</figure>
+
+<div class="card-body text-white">
+
+<div class="flex justify-between items-center">
+<h2 class="card-title text-2xl font-bold">Bali, Indonesia</h2>
+<span class="text-yellow-400 font-semibold">$1800</span>
+</div>
+
+<p class="text-gray-300 text-sm">📍 Bali</p>
+
+<button class="btn w-full mt-4 bg-white/20 border border-white/30 text-white hover:bg-white/30">
+Book This Trip
+</button>
+
+</div>
+</div>
+
+
+</section>
+
+</body>
+</html>

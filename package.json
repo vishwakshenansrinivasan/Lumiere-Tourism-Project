@@ -1,0 +1,24 @@
+{
+  "name": "lumiereeee",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/SkullGAMERSS/Lumiereeee#readme",
+  "bugs": {
+    "url": "https://github.com/SkullGAMERSS/Lumiereeee/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SkullGAMERSS/Lumiereeee.git"
+  },
+  "license": "ISC",
+  "author": "Skull",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.2.1",
+    "tailwindcss": "^4.2.1"
+  }
+}

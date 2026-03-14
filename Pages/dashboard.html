@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Glass Navbar</title>
+
+<!-- Tailwind + DaisyUI -->
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="min-h-screen bg-gradient-to-r from-green-900 via-green-800 to-black">
+
+
+<!-- Glass Navbar -->
+<div class="navbar fixed top-4 left-1/2 -translate-x-1/2 w-[90%] 
+bg-white/10 backdrop-blur-md border border-white/20 
+rounded-2xl shadow-xl px-6 z-50">
+
+  <!-- Logo -->
+  <div class="flex-1">
+    <a href="/index.html" class="text-xl font-bold text-white tracking-wide">
+      Lumiere
+    </a>
+  </div>
+
+  <!-- Menu -->
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1 text-white">
+
+      <li>
+        <a href="/index.html" class="hover:bg-white/20 rounded-lg">Home</a>
+      </li>
+
+      <li>
+        <a href="/Pages/dashboard.html" class="hover:bg-white/20 rounded-lg">Dashboard</a>
+      </li>
+
+      <li>
+        <a href="/Pages/tours.html" class="hover:bg-white/20 rounded-lg">Tours</a>
+      </li>
+
+      <li>
+        <a href="/Pages/contact.html" class="hover:bg-white/20 rounded-lg">Contact</a>
+      </li>
+
+    </ul>
+  </div>
+
+</div>
+
+
+<!-- Dummy Hero -->
+<div class="hero min-h-screen">
+  <div class="hero-content text-center text-white">
+    <div>
+      <h1 class="text-6xl font-bold">Explore the World</h1>
+      <p class="py-6 text-gray-300">
+        Travel beyond boundaries with curated destinations.
+      </p>
+      <button class="btn btn-primary">Start Exploring</button>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

@@ -5,19 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lumiere - Explore the Unexplored!</title>
     <link rel="icon" href="/images/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="/app.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- DaisyUI -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet">
+
     
 </head>
 <body>
-    <nav>
-        
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/Pages/about.html">About</a></li>
-            <li><a href="/Pages/dashboard.html">Dashboard</a></li>
-        </ul>
-    </nav>
-    <h1>Hello World</h1>
-    <p>This is a simple HTML document.</p>
+<!-- Navbar -->
+<div class="navbar bg-base-100 shadow-sm ">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-xl">MySite</a>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1 hover:bg-blue-200 transition-colors duration-300 rounded-lg">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/Pages/dashboard.html">Dashboard</a></li>
+      <li><a href="/Pages/tours.html">Tours</a></li>
+      <li><a href="/Pages/contact.html">Contact</a></li>
+    </ul>
+  </div>
+</div>
+<!-- Hero -->
+<div
+  class="hero min-h-screen"
+  style="background-image: url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp);">
+  <div class="hero-overlay"></div>
+  <div class="hero-content text-neutral-content text-center">
+    <div class="max-w-md">
+      <h1 class="mb-5 text-6xl font-bold tracking-wider bg-gradient-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent shadow-cyan-400 shadow-lg shadow-2xl rounded-lg p-4"
+      style="font-family: 'Dancing Script', cursive;">
+      Explore 
+      The Unexplored!
+      </h1>
+      <p class="mb-5 text-lg text-amber-50 shadow-lime-300 shadow-lg rounded-lg p-4">
+        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+        quasi. In deleniti eaque aut repudiandae et a id nisi.
+      </p>
+      <button class="btn btn-primary shadow-orange-400 ">Get Started</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
