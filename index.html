@@ -16,53 +16,82 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="src/output.css">
-    
+    <style>
+    .nav-hidden{
+        transform: translateY(-100%);
+    }
+    </style>
 </head>
 <body>
 
     <!-- Glass Navbar -->
     <div id="navbar"
-    class="navbar fixed top-4 left-1/2 -translate-x-1/2 w-[85%]
-    bg-white/10 backdrop-blur-md border border-white/20
-    rounded-xl shadow-lg px-4 py-0 z-50
-    transition-all duration-300">
+class="navbar fixed top-4 left-1/2 -translate-x-1/2 w-[85%]
+bg-white/10 backdrop-blur-md border border-white/20
+rounded-xl shadow-lg px-4 py-0 z-50
+transition-all duration-300">
 
-        <!-- Logo -->
-        <!-- Logo -->
+<!-- Logo -->
 <div class="flex-1">
-    <a href="/index.html" style="color:#1a1a1a; font-size:1.1rem; font-weight:700;">Lumiere</a>
+<a href="/index.html"
+class="text-lg font-extrabold text-yellow-500 hover:text-black hover:text-xl transition duration-75 ease-in-out tracking-wide">
+Lumiere
+</a>
 </div>
 
-        <!-- Menu -->
-        <div class="flex-none">
-            <ul class="menu menu-horizontal px-1 text-sm text-black">
-            <li><a href="/index.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Home</a></li>
-            <li><a href="/Pages/dashboard.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Dashboard</a></li>
-            <li><a href="/Pages/tours.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Tours</a></li>
-            <li><a href="/Pages/contact.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Contact us</a></li>
-            </ul>
-        </div>
+<!-- Right Side -->
+<div class="flex items-center gap-4">
 
-    </div>
+<ul class="menu menu-horizontal px-1 text-sm text-black">
 
+<li><a href="/index.html" class="px-3 py-1 hover:bg-gray-400/30 hover:text-yellow-400 rounded-lg">Home</a></li>
+
+<li><a href="/Pages/dashboard.html" class="px-3 py-1 hover:bg-cyan-50 hover:text-yellow-400 rounded-lg">Dashboard</a></li>
+
+<li><a href="/Pages/tours.html" class="px-3 py-1 hover:bg-cyan-50 hover:text-yellow-400 rounded-lg">Tours</a></li>
+
+<li><a href="/Pages/contact.html" class="px-3 py-1 hover:bg-cyan-50 hover:text-yellow-400 rounded-lg">Contact</a></li>
+
+</ul>
+
+<!-- Login Button -->
+<button
+class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg
+hover:bg-yellow-500 hover:text-lg transition duration-300"
+onclick="location.href='/Pages/login.html'">
+
+Login
+
+</button>
+
+</div>
+
+</div>
     <script>
     let prevScroll = window.pageYOffset;
     const navbar = document.getElementById("navbar");
+
     window.onscroll = function(){
-        let currentScroll = window.pageYOffset;
-        if(prevScroll > currentScroll){
-            navbar.classList.remove("nav-hidden");
-        } else {
-            navbar.classList.add("nav-hidden");
-        }
-        if(currentScroll > 50){
-            navbar.classList.add("scale-95");
-        } else {
-            navbar.classList.remove("scale-95");
-        }
-        prevScroll = currentScroll;
+
+    let currentScroll = window.pageYOffset;
+
+    if(prevScroll > currentScroll){
+    navbar.classList.remove("nav-hidden");
+    }else{
+    navbar.classList.add("nav-hidden");
     }
+    if(currentScroll > 50){
+    navbar.classList.add("scale-95");
+    }else{
+    navbar.classList.remove("scale-95");
+    }
+    prevScroll = currentScroll;
+
+    }
+
     </script>
+
+    <section class="max-w-7xl mx-auto px-8 py-16 text-white">
 
     <!-- Hero Section -->
     <section class="hero-section">
