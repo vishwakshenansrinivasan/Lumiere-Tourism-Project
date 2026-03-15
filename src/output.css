@@ -283,16 +283,3 @@ body { background-color: #f0eeeb; }
     to   { opacity: 1; transform: translateY(0); }
 }
 
-#navbar .flex-1 {
-    display: flex !important;
-    align-items: center !important;
-}
-
-#navbar .flex-1 a {
-    color: #1a1a1a !important;
-    font-size: 1.1rem !important;
-    font-weight: 600 !important;
-    text-decoration: none !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-}
