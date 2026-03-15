@@ -15,15 +15,15 @@ transform: translateY(-100%);
 </style>
 
 </head>
-<body class="min-h-screen bg-gradient-to-r from-green-950 via-green-800 to-black">
+<body class="min-h-screen bg-gradient-to-r from-gray-900 to-blue-950">
     <div class="relative h-[60vh] w-full">
         <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1600&auto=format&fit=crop"
         alt="Kyoto, Japan"
         class="w-full h-full object-cover">
 
-        <div class="absolute inset-0 bg-gradient-to-t from-blue-100/50 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-blue-100/50 to-transparent opacity-50"></div>
         <div class="absolute bottom-0 left-0 p-10 max-w-7xl mx-auto w-full">
-            <h1 class="text-5xl md:text-7xl font-serif bg-gradient-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent mb-4" style="opacity: 1; transform: none;">Kyoto, Japan</h1>
+            <h1 class="text-5xl md:text-7xl font-extrabold font-serif bg-gradient-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent mb-4" style="opacity: 1; transform: none;">Kyoto, Japan</h1>
             <div class="flex items-center gap-6 font-bold text-black/80">
                 <span class="flex items-center font-bold gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 font-extrabold text-red-500">
@@ -37,33 +37,47 @@ transform: translateY(-100%);
             </div>
     <!-- Glass Navbar -->
     <div id="navbar"
-    class="navbar fixed top-4 left-1/2 -translate-x-1/2 w-[85%]
-    bg-white/10 backdrop-blur-md border border-white/20
-    rounded-xl shadow-lg px-4 py-0 z-50
-    transition-all duration-300">
+class="navbar fixed top-4 left-1/2 -translate-x-1/2 w-[85%]
+bg-white/10 backdrop-blur-md border border-white/20
+rounded-xl shadow-lg px-4 py-0 z-50
+transition-all duration-300">
 
-    <!-- Logo -->
-    <div class="flex-1">
-        <a href="/index.html" class="text-lg font-semibold text-white hover:text-yellow-500 tracking-wide">
-        Lumiere
-        </a>
-    </div>
+<!-- Logo -->
+<div class="flex-1">
+<a href="/index.html"
+class="text-lg font-extrabold text-yellow-500 hover:text-black hover:text-xl transition duration-75 ease-in-out tracking-wide">
+Lumiere
+</a>
+</div>
 
-    <!-- Menu -->
-    <div class="flex-none">
-        <ul class="menu menu-horizontal px-1 text-sm text-white">
+<!-- Right Side -->
+<div class="flex items-center gap-4">
 
-        <li><a href="/index.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Home</a></li>
+<ul class="menu menu-horizontal px-1 text-sm text-white">
 
-        <li><a href="/Pages/dashboard.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Dashboard</a></li>
+<li><a href="/index.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Home</a></li>
 
-        <li><a href="/Pages/tours.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Tours</a></li>
+<li><a href="/Pages/dashboard.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Dashboard</a></li>
 
-        <li><a href="/Pages/contact.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Contact</a></li>
+<li><a href="/Pages/tours.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Tours</a></li>
 
-        </ul>
-    </div>
-    </div>
+<li><a href="/Pages/contact.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Contact</a></li>
+
+</ul>
+
+<!-- Login Button -->
+<button
+class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg
+hover:bg-yellow-500 transition duration-300"
+onclick="location.href='/Pages/login.html'">
+
+Login
+
+</button>
+
+</div>
+
+</div>
     <script>
     let prevScroll = window.pageYOffset;
     const navbar = document.getElementById("navbar");
@@ -93,7 +107,7 @@ transform: translateY(-100%);
 <!-- Description -->
 <div class="mb-14 max-w-3xl">
 <h2 class="text-3xl font-bold mb-4">About the Journey</h2>
-<p class="text-gray-300 leading-relaxed">
+<p class="text-white leading-relaxed">
 Explore the cultural heart of Japan with our curated tour of Kyoto’s temples,
 zen gardens, and historic neighborhoods. From ancient shrines to bamboo
 forests, this journey immerses you in the traditions and beauty of Japan.
@@ -111,7 +125,7 @@ rounded-2xl p-8 shadow-xl">
 Tour Highlights
 </h3>
 
-<ul class="space-y-4 text-gray-200">
+<ul class="space-y-4 text-black font-bold leading-relaxed">
 
 <li>⛩ Visit the iconic Fushimi Inari Shrine with its thousands of torii gates</li>
 
@@ -135,7 +149,7 @@ rounded-2xl p-8 shadow-xl">
 Tour Details
 </h3>
 
-<div class="space-y-4 text-gray-200">
+<div class="space-y-4 text-black font-bold leading-relaxed">
 
 <p><strong>Duration:</strong> 5 Days / 4 Nights</p>
 
