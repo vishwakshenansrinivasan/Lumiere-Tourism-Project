@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bali - Lumiere</title>
+<!-- Tailwind + DaisyUI -->
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+<style>
+.nav-hidden{
+transform: translateY(-100%);
+}
+</style>
+
+</head>
+<body class="min-h-screen bg-white">
+    <div class="relative h-[60vh] w-full">
+        <img src="/images/assets/bali/bali-1.jpg"
+        alt="Bali, Indonesia"
+        class="relative w-full h-full object-cover">
+
+        <div class="absolute inset-0"></div>
+        <div class="absolute bottom-0 left-0 p-10 max-w-7xl mx-auto w-full">
+            <h1 class="text-5xl md:text-7xl font-extrabold font-serif bg-gradient-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent mb-4" style="opacity: 1; transform: none;">Bali, Indonesia</h1>
+            <div class="flex items-center gap-6 font-bold text-black/80">
+                <span class="flex items-center font-bold text-white gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 font-extrabold text-red-500">
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                        <circle cx="12" cy="10" r="3"></circle></svg> Bali, Indonesia</span>
+                        <span class="flex items-center gap-2">
+                            <div class="text-yellow-400 text-2xl font-serif">₹250000.00 / person</div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+    <!-- Glass Navbar -->
+    <div id="navbar"
+class="navbar fixed top-4 left-1/2 -translate-x-1/2 w-[85%]
+bg-white/10 backdrop-blur-md border border-white/20
+rounded-xl shadow-lg px-4 py-0 z-50
+transition-all duration-300">
+
+<!-- Logo -->
+<div class="flex-1">
+<a href="/index.html"
+class="text-lg font-extrabold text-yellow-500 hover:text-black hover:text-xl transition-all duration-300 ease-in-out tracking-wide">
+Lumiere
+</a>
+</div>
+
+<!-- Right Side -->
+<div class="flex items-center gap-4">
+
+<ul class="menu menu-horizontal px-1 text-sm text-black">
+
+<li><a href="/index.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Home</a></li>
+
+<li><a href="/Pages/dashboard.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Dashboard</a></li>
+
+<li><a href="/Pages/tours.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Tours</a></li>
+
+<li><a href="/Pages/contact.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Contact</a></li>
+
+</ul>
+
+<!-- Login Button -->
+<button
+class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg
+hover:bg-yellow-500 transition duration-300"
+onclick="location.href='/Pages/login.html'">
+
+Login
+
+</button>
+
+</div>
+
+</div>
+    <script>
+    let prevScroll = window.pageYOffset;
+    const navbar = document.getElementById("navbar");
+
+    window.onscroll = function(){
+
+    let currentScroll = window.pageYOffset;
+
+    if(prevScroll > currentScroll){
+    navbar.classList.remove("-translate-y-32", "opacity-0");
+    }else{
+    navbar.classList.add("-translate-y-32", "opacity-0");
+    }
+    if(currentScroll > 50){
+    navbar.classList.add("scale-95");
+    }else{
+    navbar.classList.remove("scale-95");
+    }
+    prevScroll = currentScroll;
+
+    }
+
+    </script>
+
+    <section class="min-h-screen mx-auto px-8 py-16 text-black">
+
+<!-- Description -->
+<div class="mx-auto mb-14 max-w-7xl bg-gray-100/10 border border-black/20 rounded-2xl p-8 shadow-xl hover:scale-105 transition-all duration-500 hover:shadow-lg hover:border-yellow-400 hover:shadow-yellow-400/20 hover:bg-gray-100/20">
+<h2 class="text-3xl font-bold mb-4">About the Journey</h2>
+<p class="text-black leading-relaxed">
+Experience the magic of Bali, the Island of the Gods. This curated tour takes you through lush rice terraces, ancient water temples, and pristine beaches. Immerse yourself in the vibrant Balinese culture, serene spiritual sites, and breathtaking tropical landscapes.
+</p>
+</div>
+
+<div id="gallery" class="relative max-w-7xl mx-auto mb-10 p-3 border border-black/20 rounded-2xl shadow-xl hover:scale-105 transition-all duration-500 hover:shadow-lg hover:shadow-yellow-400/20 hover:border-yellow-400" data-carousel="slide">
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+         <!-- Item 1 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?q=80&w=1600&auto=format&fit=crop" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
+        </div>
+        <!-- Item 2 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1600&auto=format&fit=crop" class="relative block w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
+        </div>
+        <!-- Item 3 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?q=80&w=1600&auto=format&fit=crop" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
+        </div>
+        <!-- Item 4 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=1600&auto=format&fit=crop" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
+        </div>
+        <!-- Item 5 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="https://images.unsplash.com/photo-1604999333679-b86d54738311?q=80&w=1600&auto=format&fit=crop" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
+        </div>
+    </div>
+    <!-- Slider controls -->
+    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-5 h-5 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/></svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-5 h-5 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/></svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
+</div>
+
+<!-- Highlights + Tour Info -->
+<div class="grid md:grid-cols-2 gap-10">
+
+<!-- Highlights Card -->
+<div class="bg-gray-100/10 backdrop-blur-md border border-black/20
+rounded-2xl p-8 shadow-xl hover:scale-105 transition-all duration-500 hover:shadow-lg hover:border-yellow-400 hover:shadow-yellow-400/20">
+
+<h3 class="text-2xl font-bold mb-6 text-yellow-400">
+Tour Highlights
+</h3>
+
+<ul class="space-y-4 text-black font-bold leading-relaxed">
+
+<li>🏞️ Visit the iconic Uluwatu Temple perched on a breathtaking sea cliff</li>
+
+<li>🏕️ Take a stunning walk through the cascading Tegalalang Rice Terraces</li>
+
+<li>🐒 Encounter wildlife at the sacred Monkey Forest Sanctuary in Ubud</li>
+
+<li>🏖️ Relax on the pristine white sands of Nusa Dua beach</li>
+
+<li>🎭 Experience a magical sunset and traditional Kecak fire dance</li>
+
+</ul>
+
+</div>
+
+<!-- Tour Details Card -->
+<div class="bg-gray-100/10 backdrop-blur-md border border-black/20
+rounded-2xl p-8 shadow-xl hover:scale-105 transition-all duration-500 hover:shadow-lg hover:shadow-yellow-400/20 hover:border-yellow-400">
+
+<h3 class="text-2xl font-bold underline underline-offset-4 decoration-yellow-400 mb-6 text-yellow-400">
+Tour Details
+</h3>
+
+<div class="space-y-4 text-black font-bold leading-relaxed">
+
+<p><strong>Duration:</strong> 6 Days / 5 Nights</p>
+
+<p><strong>Price:</strong> ₹2,50,000 per person</p>
+
+<p>
+<strong>Includes:</strong> Luxury accommodation, guided tours,
+entrance tickets, and selected traditional meals.
+</p>
+
+</div>
+
+<!-- Button -->
+<button
+class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
+bg-black border-white/30 shadow-lg hover:shadow-black/20 hover:box
+rounded-lg font-semibold text-white overflow-hidden
+transition-all duration-1000 group " onclick="location.href='/index.html'">
+
+
+<!-- Ripple -->
+<span
+class="absolute top-1/2 left-1/2 w-0 h-0
+bg-yellow-400 rounded-full
+transform -translate-x-1/2 -translate-y-1/2
+transition-all duration-700 ease-in-out
+group-hover:w-[750px] group-hover:h-[500px]">
+</span>
+
+<!-- Left Arrow -->
+<img
+src="/images/plane.png"
+class="absolute w-5 left-4
+invert brightness-200
+scale-150
+transition-all duration-1000 ease-in-out
+group-hover:left-[calc(100%-2rem)]
+group-hover:scale-170
+group-hover:invert-0 group-hover:brightness-100"
+/>
+
+<!-- Text -->
+<span
+class="relative z-10 transition-all duration-700 group-hover:text-white">
+Book This Trip
+</span>
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</body>
+</html>
