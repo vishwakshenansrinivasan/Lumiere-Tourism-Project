@@ -26,7 +26,7 @@
 
     <!-- Glass Navbar -->
     <div id="navbar"
-class="navbar fixed top-4 left-1/2 -translate-x-1/2 w-[85%]
+class="navbar fixed top-4 inset-x-0 mx-auto w-[85%]
 bg-white/10 backdrop-blur-md border border-white/20
 rounded-xl shadow-lg px-4 py-0 z-50
 transition-all duration-300">
@@ -34,7 +34,7 @@ transition-all duration-300">
 <!-- Logo -->
 <div class="flex-1">
 <a href="/index.html"
-class="text-lg font-extrabold text-yellow-500 hover:text-black hover:text-xl transition duration-75 ease-in-out tracking-wide">
+class="text-lg font-extrabold text-yellow-500 hover:text-black hover:text-xl transition-all duration-300 ease-in-out tracking-wide">
 Lumiere
 </a>
 </div>
@@ -44,20 +44,20 @@ Lumiere
 
 <ul class="menu menu-horizontal px-1 text-sm text-black">
 
-<li><a href="/index.html" class="px-3 py-1 hover:bg-gray-400/30 hover:text-yellow-400 rounded-lg">Home</a></li>
+<li><a href="/index.html" class="px-3 py-1 hover:text-yellow-400 hover:bg-black hover:text-white transition-all hover:font-bold duration-300 ease-in-out rounded-lg">Home</a></li>
 
-<li><a href="/Pages/dashboard.html" class="px-3 py-1 hover:bg-cyan-50 hover:text-yellow-400 rounded-lg">Dashboard</a></li>
+<li><a href="/Pages/dashboard.html" class="px-3 py-1 hover:text-yellow-400 hover:bg-black hover:text-white transition-all hover:font-bold duration-300 ease-in-out rounded-lg">Dashboard</a></li>
 
-<li><a href="/Pages/tours.html" class="px-3 py-1 hover:bg-cyan-50 hover:text-yellow-400 rounded-lg">Tours</a></li>
+<li><a href="/Pages/tours.html" class="px-3 py-1 hover:text-yellow-400 hover:bg-black hover:text-white transition-all hover:font-bold duration-300 ease-in-out rounded-lg">Tours</a></li>
 
-<li><a href="/Pages/contact.html" class="px-3 py-1 hover:bg-cyan-50 hover:text-yellow-400 rounded-lg">Contact</a></li>
+<li><a href="/Pages/contact.html" class="px-3 py-1 hover:text-yellow-400 hover:bg-black hover:text-white transition-all hover:font-bold duration-300 ease-in-out rounded-lg">Contact</a></li>
 
 </ul>
 
 <!-- Login Button -->
 <button
 class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg
-hover:bg-yellow-500 hover:text-lg transition duration-300"
+hover:text-lg hover:bg-black hover:text-white transition-all duration-300"
 onclick="location.href='/Pages/login.html'">
 
 Login
@@ -76,9 +76,9 @@ Login
     let currentScroll = window.pageYOffset;
 
     if(prevScroll > currentScroll){
-    navbar.classList.remove("nav-hidden");
+    navbar.classList.remove("-translate-y-32", "opacity-0");
     }else{
-    navbar.classList.add("nav-hidden");
+    navbar.classList.add("-translate-y-32", "opacity-0");
     }
     if(currentScroll > 50){
     navbar.classList.add("scale-95");
@@ -106,7 +106,7 @@ Login
                     <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=200&q=80" alt="beach">
                 </span>
                 By<br>
-                Traveling &nbsp;<span class="accent-word">New World</span>
+                Traveling &nbsp;<span class="accent-word text-transparent bg-gradient-to-br bg-clip-text from-teal-500 via-indigo-500 to-sky-500 dark:from-teal-200 dark:via-indigo-300 dark:to-sky-500">New Worlds</span>
             </h1>
         </div>
 
@@ -115,7 +115,24 @@ Login
             create memories that last a lifetime. Your next adventure is just one step away.
         </p>
 
-        <a href="/Pages/contact.html" class="cta-btn">Contact Us</a>
+        <a href="/Pages/contact.html" class="cta-btn relative flex items-center justify-center gap-2 mt-4 px-8 py-3 pl-12
+border border-white/30 shadow-lg hover:shadow-2xl hover:scale-105 hover:shadow-black/50 hover:bg-yellow-500 hover:text-black
+rounded-lg font-semibold text-white overflow-hidden
+transition-all duration-500 group">
+<span class="transition-all duration-700 group-hover:-translate-x-4">
+Contact Us
+</span>
+<img
+src="/images/caller.png"
+class="absolute w-5 left-4
+invert brightness-200
+transition-all duration-700 ease-in-out
+group-hover:left-[calc(100%-2rem)]
+group-hover:rotate-12
+group-hover:scale-150
+group-hover:invert-0 group-hover:brightness-100"
+/>
+</a>
 
         <div class="tiles-row">
             <div class="tile">
@@ -133,21 +150,23 @@ Login
         </div>
 <a href="/Pages/tours.html"
 class="cta-btn relative flex items-center justify-center gap-2 mt-4 px-8 py-3 pl-12
-border border-white/30 shadow-lg hover:shadow-white/20
+border border-white/30 shadow-lg hover:shadow-2xl hover:scale-105 hover:shadow-black/50 hover:bg-yellow-500 hover:text-black
 rounded-lg font-semibold text-white overflow-hidden
 transition-all duration-500 group">
 
+<!-- Button Text -->
+<span class="transition-all duration-700 group-hover:-translate-x-5">
 Visit our Destinations
-
-<!-- Arrow -->
-<svg
-viewBox="0 0 24 24"
-class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:fill-black group-hover:left-6"
-xmlns="http://www.w3.org/2000/svg">
-
-<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
-
-</svg>
+</span>
+<img
+src="/images/plane.png"
+class="absolute w-5 left-4
+invert brightness-200
+transition-all duration-700 ease-in-out
+group-hover:left-[calc(100%-2rem)]
+group-hover:scale-150
+group-hover:invert-0 group-hover:brightness-100"
+/>
 
 </a>
 
