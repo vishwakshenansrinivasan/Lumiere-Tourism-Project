@@ -1,0 +1,28 @@
+.float-pin {
+    position: absolute;
+    left: 32%;
+    top: 15%;
+    font-size: 2.8rem;
+    animation: floatY 3.5s ease-in-out infinite;
+    z-index: 1;
+}
+
+.float-plane {
+    position: absolute;
+    right: 32%;
+    top: 80%;
+    font-size: 2.6rem;
+    animation: floatX 4s ease-in-out infinite;
+    transform: scaleX(-1);
+    z-index: 1;
+}
+
+@keyframes floatY {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-14px); }
+}
+
+@keyframes floatX {
+    0%, 100% { transform: scaleX(-1) translateY(0px); }
+    50% { transform: scaleX(-1) translateY(-10px); }
+}
