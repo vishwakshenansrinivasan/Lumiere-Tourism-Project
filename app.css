@@ -1,38 +1,5 @@
 @import "tailwindcss";
 
-nav ul {
-    list-style-type: none;
-    overflow: hidden;
-    background-color: #333;
-    display: flex;
-    align-items: center;
-}
-
-nav ul li a {
-    display: block;
-    color: #1a1a1a;
-    text-align: center;
-    padding: 10px 20px;
-    text-decoration: none;
-    background-color: transparent;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: blue;
-    background-color: black;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    animation: ease-in-out;
-    animation-duration: 500ms;
-}
-
-nav ul li a.active {
-    background-color: #04AA6D;
-    color: white;
-}
-
 /* ── HERO SECTION — added at bottom ── */
 body { background-color: #f0eeeb; }
 
