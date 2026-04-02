@@ -34,9 +34,9 @@
 
 <body class="min-h-screen bg-white">
 
-<!-- Navbar -->
-    <div id="navbar"
-class="navbar fixed top-4 left-1/2 -translate-x-1/2 w-[85%]
+<!-- Glass Navbar -->
+<div id="navbar"
+class="navbar fixed top-4 inset-x-0 mx-auto w-[85%]
 bg-white/10 backdrop-blur-md border border-white/20
 rounded-xl shadow-lg px-4 py-0 z-50
 transition-all duration-300">
@@ -44,7 +44,7 @@ transition-all duration-300">
 <!-- Logo -->
 <div class="flex-1">
 <a href="/index.html"
-class="text-lg font-extrabold text-yellow-500 hover:text-black hover:text-xl transition duration-75 ease-in-out tracking-wide">
+class="text-lg font-extrabold text-yellow-500 hover:text-black hover:text-xl transition-all duration-300 ease-in-out tracking-wide">
 Lumiere
 </a>
 </div>
@@ -54,20 +54,22 @@ Lumiere
 
 <ul class="menu menu-horizontal px-1 text-sm text-black">
 
-<li><a href="/index.html" class="px-3 py-1 hover:bg-gray-400/30 hover:text-yellow-400 rounded-lg">Home</a></li>
+<li><a href="/index.html" class="px-3 py-1 hover:text-yellow-400 hover:bg-black hover:text-white transition-all hover:font-bold duration-300 ease-in-out rounded-lg">Home</a></li>
 
-<li><a href="/Pages/dashboard.html" class="px-3 py-1 hover:bg-cyan-50 hover:text-yellow-400 rounded-lg">Dashboard</a></li>
+<li><a href="/Pages/dashboard.html" class="px-3 py-1 hover:text-yellow-400 hover:bg-black hover:text-white transition-all hover:font-bold duration-300 ease-in-out rounded-lg">Dashboard</a></li>
 
-<li><a href="/Pages/tours.html" class="px-3 py-1 hover:bg-cyan-50 hover:text-yellow-400 rounded-lg">Tours</a></li>
+<li><a href="/Pages/admin/adminlogin.html" class="px-3 py-1 hover:text-yellow-400 hover:bg-black hover:text-white transition-all hover:font-bold duration-300 ease-in-out rounded-lg">Admin</a></li>
 
-<li><a href="/Pages/contact.html" class="px-3 py-1 hover:bg-cyan-50 hover:text-yellow-400 rounded-lg">Contact</a></li>
+<li><a href="/Pages/tours.html" class="px-3 py-1 hover:text-yellow-400 hover:bg-black hover:text-white transition-all hover:font-bold duration-300 ease-in-out rounded-lg">Tours</a></li>
+
+<li><a href="/Pages/contact.html" class="px-3 py-1 hover:text-yellow-400 hover:bg-black hover:text-white transition-all hover:font-bold duration-300 ease-in-out rounded-lg">Contact</a></li>
 
 </ul>
 
 <!-- Login Button -->
 <button
 class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg
-hover:bg-yellow-500 hover:text-lg transition duration-300"
+hover:text-lg hover:bg-black hover:text-white transition-all duration-300"
 onclick="location.href='/Pages/login.html'">
 
 Login
@@ -86,9 +88,9 @@ Login
     let currentScroll = window.pageYOffset;
 
     if(prevScroll > currentScroll){
-    navbar.classList.remove("nav-hidden");
+    navbar.classList.remove("-translate-y-32", "opacity-0");
     }else{
-    navbar.classList.add("nav-hidden");
+    navbar.classList.add("-translate-y-32", "opacity-0");
     }
     if(currentScroll > 50){
     navbar.classList.add("scale-95");
@@ -100,6 +102,7 @@ Login
     }
 
     </script>
+
 
     <section class="bg-purple-header pt-40 pb-32 px-8 text-white text-center md:text-left">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start">
