@@ -20,72 +20,86 @@ transform: translateY(-100%);
 
 </head>
 
-<body class="min-h-screen bg-gradient-to-r from-green-900 via-green-800 to-black">
+<body class="min-h-screen bg-white text-black">
 
 <!-- Glass Navbar -->
 <div id="navbar"
-class="navbar fixed top-4 left-1/2 -translate-x-1/2 w-[85%]
+class="navbar fixed top-4 inset-x-0 mx-auto w-[85%]
 bg-white/10 backdrop-blur-md border border-white/20
 rounded-xl shadow-lg px-4 py-0 z-50
 transition-all duration-300">
 
-  <!-- Logo -->
-  <div class="flex-1">
-    <a href="/index.html" class="text-lg font-extrabold text-yellow-500 hover:text-black hover:text-xl transition duration-75 ease-in-out tracking-wide">
-      Lumiere
-    </a>
-  </div>
-
-  <!-- Menu -->
-  <div class="flex-none">
-    <ul class="menu menu-horizontal px-1 text-sm text-white">
-
-    <li><a href="/index.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Home</a></li>
-
-    <li><a href="/Pages/dashboard.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Dashboard</a></li>
-
-    <li><a href="/Pages/tours.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Tours</a></li>
-
-    <li><a href="/Pages/contact.html" class="px-3 py-1 hover:bg-white/20 hover:text-yellow-400 rounded-lg">Contact</a></li>
-
-    </ul>
-  </div>
+<!-- Logo -->
+<div class="flex-1">
+<a href="/index.html"
+class="text-lg font-extrabold text-yellow-500 hover:text-black hover:text-xl transition-all duration-300 ease-in-out tracking-wide">
+Lumiere
+</a>
 </div>
-<script>
 
-let prevScroll = window.pageYOffset;
-const navbar = document.getElementById("navbar");
+<!-- Right Side -->
+<div class="flex items-center gap-4">
 
-window.onscroll = function(){
+<ul class="menu menu-horizontal px-1 text-sm text-black">
 
-let currentScroll = window.pageYOffset;
+<li><a href="/index.html" class="px-3 py-1 hover:text-yellow-400 hover:bg-black hover:text-white transition-all hover:font-bold duration-300 ease-in-out rounded-lg">Home</a></li>
 
-if(prevScroll > currentScroll){
-navbar.classList.remove("nav-hidden");
-}else{
-navbar.classList.add("nav-hidden");
-}
-if(currentScroll > 50){
-navbar.classList.add("scale-95");
-}else{
-navbar.classList.remove("scale-95");
-}
-prevScroll = currentScroll;
+<li><a href="/Pages/dashboard.html" class="px-3 py-1 hover:text-yellow-400 hover:bg-black hover:text-white transition-all hover:font-bold duration-300 ease-in-out rounded-lg">Dashboard</a></li>
 
-}
+<li><a href="/Pages/admin/adminlogin.html" class="px-3 py-1 hover:text-yellow-400 hover:bg-black hover:text-white transition-all hover:font-bold duration-300 ease-in-out rounded-lg">Admin</a></li>
 
-</script>
+<li><a href="/Pages/tours.html" class="px-3 py-1 hover:text-yellow-400 hover:bg-black hover:text-white transition-all hover:font-bold duration-300 ease-in-out rounded-lg">Tours</a></li>
 
+<li><a href="/Pages/contact.html" class="px-3 py-1 hover:text-yellow-400 hover:bg-black hover:text-white transition-all hover:font-bold duration-300 ease-in-out rounded-lg">Contact</a></li>
+
+</ul>
+
+<!-- Login Button -->
+<button
+class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg
+hover:text-lg hover:bg-black hover:text-black transition-all duration-300"
+onclick="location.href='/Pages/login.html'">
+
+Login
+
+</button>
+
+</div>
+
+</div>
+    <script>
+    let prevScroll = window.pageYOffset;
+    const navbar = document.getElementById("navbar");
+
+    window.onscroll = function(){
+
+    let currentScroll = window.pageYOffset;
+
+    if(prevScroll > currentScroll){
+    navbar.classList.remove("-translate-y-32", "opacity-0");
+    }else{
+    navbar.classList.add("-translate-y-32", "opacity-0");
+    }
+    if(currentScroll > 50){
+    navbar.classList.add("scale-95");
+    }else{
+    navbar.classList.remove("scale-95");
+    }
+    prevScroll = currentScroll;
+
+    }
+
+    </script>
 
 
 <!-- Page Title -->
-<section class="text-center py-16 text-white">
+<section class="text-center py-16 text-black">
 
 <h1 class="text-5xl font-bold mb-4">
 Explore Our <span class="text-yellow-400 italic">Journeys</span>
 </h1>
 
-<p class="text-gray-300 text-lg">
+<p class="text-black text-lg">
 Discover the world's most enchanting places, curated for the modern explorer.
 </p>
 
@@ -97,25 +111,25 @@ Discover the world's most enchanting places, curated for the modern explorer.
 
 
 <!-- Card 1 -->
-<div class="card bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 transition duration-300">
+<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300">
 <figure>
-<img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9"
+<img src="/images/assets/kyoto/kyoto-1.avif"
 class="h-60 w-full object-cover">
 </figure>
 
-<div class="card-body text-white">
+<div class="card-body text-black">
 
 <div class="flex justify-between items-center">
 <h2 class="card-title text-2xl font-bold">Kyoto, Japan</h2>
-<span class="text-yellow-400 font-semibold">$2500</span>
+<span class="text-yellow-400 font-semibold">₹3,50,000</span>
 </div>
 
-<p class="text-gray-300 text-sm">📍 Kyoto, Japan</p>
+<p class="text-amber-400 font-bold text-sm">📍 Kyoto, Japan</p>
 
 <button
 class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
-bg-white/10 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
-rounded-lg font-semibold text-white overflow-hidden
+bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
+rounded-lg font-semibold text-black overflow-hidden
 transition-all duration-500 group " onclick="location.href='/Pages/tours/dest1.html'">
 
 
@@ -149,26 +163,26 @@ Book This Trip
 
 
 <!-- Card 2 -->
-<div class="card bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300">
 
 <figure>
-<img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470"
+<img src="/images/assets/swiss-alps/swiss-alps.jpg"
 class="h-60 w-full object-cover">
 </figure>
 
-<div class="card-body text-white">
+<div class="card-body text-black">
 
 <div class="flex justify-between items-center">
 <h2 class="card-title text-2xl font-bold">Swiss Alps</h2>
-<span class="text-yellow-400 font-semibold">$3200</span>
+<span class="text-yellow-400 font-semibold">₹3,00,000</span>
 </div>
 
-<p class="text-gray-300 text-sm">📍 Switzerland</p>
+<p class="text-amber-400 font-bold text-sm">📍 Switzerland</p>
 
 <button
 class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
-bg-white/10 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
-rounded-lg font-semibold text-white overflow-hidden
+bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
+rounded-lg font-semibold text-black overflow-hidden
 transition-all duration-500 group " onclick="location.href='/Pages/tours/dest2.html'">
 
 
@@ -202,28 +216,343 @@ Book This Trip
 
 
 <!-- Card 3 -->
-<div class="card bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 transition duration-300">
+<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300">
 
 <figure>
-<img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff"
+<img src="/images/assets/bali/bali-1.jpg"
 class="h-60 w-full object-cover">
 </figure>
 
-<div class="card-body text-white">
+<div class="card-body text-black">
 
 <div class="flex justify-between items-center">
 <h2 class="card-title text-2xl font-bold">Bali, Indonesia</h2>
-<span class="text-yellow-400 font-semibold">$1800</span>
+<span class="text-yellow-400 font-semibold">₹2,50,000</span>
 </div>
 
-<p class="text-gray-300 text-sm">📍 Bali</p>
+<p class="text-amber-400 font-bold text-sm">📍 Bali</p>
 
 <button
 class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
-bg-white/10 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
-rounded-lg font-semibold text-white overflow-hidden
+bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
+rounded-lg font-semibold text-black overflow-hidden
 transition-all duration-500 group " onclick="location.href='/Pages/tours/dest3.html'">
 
+
+<!-- Ripple -->
+<span
+class="absolute top-1/2 left-1/2 w-0 h-0
+bg-black rounded-full
+transform -translate-x-1/2 -translate-y-1/2
+transition-all duration-500
+group-hover:w-[500px] group-hover:h-[500px]">
+</span>
+
+<!-- Left Arrow -->
+<svg
+viewBox="0 0 24 24"
+class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:left-6 group-hover:fill-white"
+xmlns="http://www.w3.org/2000/svg">
+<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
+</svg>
+
+<!-- Text -->
+<span
+class="relative z-10 transition-all duration-500 group-hover:text-white">
+Book This Trip
+</span>
+
+</button>
+
+</div>
+</div>
+
+
+<!-- Card 4 -->
+<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300">
+
+<figure>
+<img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f"
+class="h-60 w-full object-cover">
+</figure>
+
+<div class="card-body text-black">
+
+<div class="flex justify-between items-center">
+<h2 class="card-title text-2xl font-bold">Paris, France</h2>
+<span class="text-yellow-400 font-semibold">₹2,80,000</span>
+</div>
+
+<p class="text-amber-400 font-bold text-sm">📍 Paris, France</p>
+
+<button
+class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
+bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
+rounded-lg font-semibold text-black overflow-hidden
+transition-all duration-500 group " onclick="location.href='/Pages/tours/dest4.html'">
+
+
+<!-- Ripple -->
+<span
+class="absolute top-1/2 left-1/2 w-0 h-0
+bg-black rounded-full
+transform -translate-x-1/2 -translate-y-1/2
+transition-all duration-500
+group-hover:w-[500px] group-hover:h-[500px]">
+</span>
+
+<!-- Left Arrow -->
+<svg
+viewBox="0 0 24 24"
+class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:left-6 group-hover:fill-white"
+xmlns="http://www.w3.org/2000/svg">
+<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
+</svg>
+
+<!-- Text -->
+<span
+class="relative z-10 transition-all duration-500 group-hover:text-white">
+Book This Trip
+</span>
+
+</button>
+
+</div>
+</div>
+
+
+<!-- Card 5 -->
+<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300">
+
+<figure>
+<img src="https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e"
+class="h-60 w-full object-cover">
+</figure>
+
+<div class="card-body text-black">
+
+<div class="flex justify-between items-center">
+<h2 class="card-title text-2xl font-bold">Santorini, Greece</h2>
+<span class="text-yellow-400 font-semibold">₹2,90,000</span>
+</div>
+
+<p class="text-amber-400 font-bold text-sm">📍 Santorini, Greece</p>
+
+<button
+class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
+bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
+rounded-lg font-semibold text-black overflow-hidden
+transition-all duration-500 group " onclick="location.href='/Pages/tours/dest5.html'">
+
+
+<!-- Ripple -->
+<span
+class="absolute top-1/2 left-1/2 w-0 h-0
+bg-black rounded-full
+transform -translate-x-1/2 -translate-y-1/2
+transition-all duration-500
+group-hover:w-[500px] group-hover:h-[500px]">
+</span>
+
+<!-- Left Arrow -->
+<svg
+viewBox="0 0 24 24"
+class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:left-6 group-hover:fill-white"
+xmlns="http://www.w3.org/2000/svg">
+<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
+</svg>
+
+<!-- Text -->
+<span
+class="relative z-10 transition-all duration-500 group-hover:text-white">
+Book This Trip
+</span>
+
+</button>
+
+</div>
+</div>
+
+
+<!-- Card 6 -->
+<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300">
+
+<figure>
+<img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18"
+class="h-60 w-full object-cover">
+</figure>
+
+<div class="card-body text-black">
+
+<div class="flex justify-between items-center">
+<h2 class="card-title text-2xl font-bold">Malé, Maldives</h2>
+<span class="text-yellow-400 font-semibold">₹3,50,000</span>
+</div>
+
+<p class="text-amber-400 font-bold text-sm">📍 Maldives</p>
+
+<button
+class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
+bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
+rounded-lg font-semibold text-black overflow-hidden
+transition-all duration-500 group " onclick="location.href='/Pages/tours/dest6.html'">
+
+
+<!-- Ripple -->
+<span
+class="absolute top-1/2 left-1/2 w-0 h-0
+bg-black rounded-full
+transform -translate-x-1/2 -translate-y-1/2
+transition-all duration-500
+group-hover:w-[500px] group-hover:h-[500px]">
+</span>
+
+<!-- Left Arrow -->
+<svg
+viewBox="0 0 24 24"
+class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:left-6 group-hover:fill-white"
+xmlns="http://www.w3.org/2000/svg">
+<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
+</svg>
+
+<!-- Text -->
+<span
+class="relative z-10 transition-all duration-500 group-hover:text-white">
+Book This Trip
+</span>
+
+</button>
+
+</div>
+</div>
+
+
+<!-- Card 7 -->
+<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300">
+
+<figure>
+<img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9"
+class="h-60 w-full object-cover">
+</figure>
+
+<div class="card-body text-black">
+
+<div class="flex justify-between items-center">
+<h2 class="card-title text-2xl font-bold">New York, USA</h2>
+<span class="text-yellow-400 font-semibold">₹3,10,000</span>
+</div>
+
+<p class="text-amber-400 font-bold text-sm">📍 New York</p>
+
+<button
+class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
+bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
+rounded-lg font-semibold text-black overflow-hidden
+transition-all duration-500 group " onclick="location.href='/Pages/tours/dest7.html'">
+
+<!-- Ripple -->
+<span
+class="absolute top-1/2 left-1/2 w-0 h-0
+bg-black rounded-full
+transform -translate-x-1/2 -translate-y-1/2
+transition-all duration-500
+group-hover:w-[500px] group-hover:h-[500px]">
+</span>
+
+<!-- Left Arrow -->
+<svg
+viewBox="0 0 24 24"
+class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:left-6 group-hover:fill-white"
+xmlns="http://www.w3.org/2000/svg">
+<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
+</svg>
+
+<!-- Text -->
+<span
+class="relative z-10 transition-all duration-500 group-hover:text-white">
+Book This Trip
+</span>
+
+</button>
+
+</div>
+</div>
+
+
+<!-- Card 8 -->
+<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300">
+
+<figure>
+<img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5"
+class="h-60 w-full object-cover">
+</figure>
+
+<div class="card-body text-black">
+
+<div class="flex justify-between items-center">
+<h2 class="card-title text-2xl font-bold">Rome, Italy</h2>
+<span class="text-yellow-400 font-semibold">₹2,90,000</span>
+</div>
+
+<p class="text-amber-400 font-bold text-sm">📍 Rome, Italy</p>
+
+<button
+class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
+bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
+rounded-lg font-semibold text-black overflow-hidden
+transition-all duration-500 group " onclick="location.href='/Pages/tours/dest8.html'">
+
+<!-- Ripple -->
+<span
+class="absolute top-1/2 left-1/2 w-0 h-0
+bg-black rounded-full
+transform -translate-x-1/2 -translate-y-1/2
+transition-all duration-500
+group-hover:w-[500px] group-hover:h-[500px]">
+</span>
+
+<!-- Left Arrow -->
+<svg
+viewBox="0 0 24 24"
+class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:left-6 group-hover:fill-white"
+xmlns="http://www.w3.org/2000/svg">
+<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
+</svg>
+
+<!-- Text -->
+<span
+class="relative z-10 transition-all duration-500 group-hover:text-white">
+Book This Trip
+</span>
+
+</button>
+
+</div>
+</div>
+
+
+<!-- Card 9 -->
+<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300">
+
+<figure>
+<img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9"
+class="h-60 w-full object-cover">
+</figure>
+
+<div class="card-body text-black">
+
+<div class="flex justify-between items-center">
+<h2 class="card-title text-2xl font-bold">Sydney, Australia</h2>
+<span class="text-yellow-400 font-semibold">₹3,80,000</span>
+</div>
+
+<p class="text-amber-400 font-bold text-sm">📍 Sydney, Australia</p>
+
+<button
+class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
+bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
+rounded-lg font-semibold text-black overflow-hidden
+transition-all duration-500 group " onclick="location.href='/Pages/tours/dest9.html'">
 
 <!-- Ripple -->
 <span
