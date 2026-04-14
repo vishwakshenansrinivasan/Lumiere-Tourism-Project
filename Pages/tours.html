@@ -55,14 +55,14 @@ Lumiere
 </ul>
 
 <!-- Login Button -->
-<button
-class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg
-hover:text-lg hover:bg-black hover:text-black transition-all duration-300"
-onclick="location.href='/Pages/login.html'">
+<% if (typeof user !== 'undefined' && user) { %>
+    <button class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:text-lg hover:bg-black hover:text-white transition-all duration-300 gap-2 flex items-center" onclick="location.href='/api/auth/logout'">Logout (<%= user.username %>)</button>
+<% } else if (typeof admin !== 'undefined' && admin) { %>
+    <button class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:text-lg hover:bg-black hover:text-white transition-all duration-300 gap-2 flex items-center" onclick="location.href='/api/auth/admin/logout'">Logout (Admin)</button>
+<% } else { %>
+    <button class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:text-lg hover:bg-black hover:text-white transition-all duration-300" onclick="location.href='/Pages/login.html'">Login</button>
+<% } %>
 
-Login
-
-</button>
 
 </div>
 
@@ -101,7 +101,6 @@ Explore Our <span class="text-yellow-400 italic">Journeys</span>
 
 <p class="text-black text-lg">
 Discover the world's most enchanting places, curated for the modern explorer.
-</p>
 
 </section>
 
@@ -109,481 +108,93 @@ Discover the world's most enchanting places, curated for the modern explorer.
 <!-- Destinations Grid -->
 <section class="grid md:grid-cols-3 gap-10 px-16 pb-20">
 
+<% destinations.forEach(function(dest) { %>
+<!-- Dynamic Card -->
+<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300 flex flex-col h-full">
 
-<!-- Card 1 -->
-<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300">
-<figure>
-<img src="/images/assets/kyoto/kyoto-1.avif"
-class="h-60 w-full object-cover">
-</figure>
-
-<div class="card-body text-black">
-
-<div class="flex justify-between items-center">
-<h2 class="card-title text-2xl font-bold">Kyoto, Japan</h2>
-<span class="text-yellow-400 font-semibold">₹3,50,000</span>
+    <figure class="flex-shrink-0">
+        <img src="<%= dest.image_url %>" class="h-60 w-full object-cover">
+    </figure>
+    
+    <div class="card-body text-black flex flex-col flex-grow">
+    
+        <div class="flex justify-between items-start gap-4">
+            <h2 class="card-title text-2xl font-bold leading-tight"><%= dest.name %></h2>
+            <span class="text-yellow-400 font-bold whitespace-nowrap text-lg">₹<%= Number(dest.price).toLocaleString('en-IN') %></span>
+        </div>
+        
+        <p class="text-amber-400 font-bold text-sm mt-2 flex-grow">📍 <%= dest.location %></p>
+        
+        <% if (dest.dest_url === '#') { %>
+            <button class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
+                bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
+                rounded-lg font-semibold text-black overflow-hidden
+                transition-all duration-500 group cursor-pointer" 
+                onclick="openQuickBooking('<%= dest.name %>', '<%= dest.price %>')">
+        <% } else { %>
+            <button class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
+                bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
+                rounded-lg font-semibold text-black overflow-hidden
+                transition-all duration-500 group cursor-pointer" 
+                onclick="location.href='<%= dest.dest_url %>'">
+        <% } %>
+        
+            <!-- Ripple -->
+            <span class="absolute top-1/2 left-1/2 w-0 h-0 bg-black rounded-full transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 group-hover:w-[500px] group-hover:h-[500px]"></span>
+            
+            <!-- Left Arrow -->
+            <svg viewBox="0 0 24 24" class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:left-6 group-hover:fill-white" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
+            </svg>
+            
+            <!-- Text -->
+            <span class="relative z-10 transition-all duration-500 group-hover:text-white">Book This Trip</span>
+        </button>
+    </div>
 </div>
-
-<p class="text-amber-400 font-bold text-sm">📍 Kyoto, Japan</p>
-
-<button
-class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
-bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
-rounded-lg font-semibold text-black overflow-hidden
-transition-all duration-500 group " onclick="location.href='/Pages/tours/dest1.html'">
-
-
-<!-- Ripple -->
-<span
-class="absolute top-1/2 left-1/2 w-0 h-0
-bg-black rounded-full
-transform -translate-x-1/2 -translate-y-1/2
-transition-all duration-500
-group-hover:w-[500px] group-hover:h-[500px]">
-</span>
-
-<!-- Left Arrow -->
-<svg
-viewBox="0 0 24 24"
-class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:left-6 group-hover:fill-white"
-xmlns="http://www.w3.org/2000/svg">
-<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
-</svg>
-
-<!-- Text -->
-<span
-class="relative z-10 transition-all duration-500 group-hover:text-white">
-Book This Trip
-</span>
-
-</button>
-
-</div>
-</div>
-
-
-<!-- Card 2 -->
-<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300">
-
-<figure>
-<img src="/images/assets/swiss-alps/swiss-alps.jpg"
-class="h-60 w-full object-cover">
-</figure>
-
-<div class="card-body text-black">
-
-<div class="flex justify-between items-center">
-<h2 class="card-title text-2xl font-bold">Swiss Alps</h2>
-<span class="text-yellow-400 font-semibold">₹3,00,000</span>
-</div>
-
-<p class="text-amber-400 font-bold text-sm">📍 Switzerland</p>
-
-<button
-class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
-bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
-rounded-lg font-semibold text-black overflow-hidden
-transition-all duration-500 group " onclick="location.href='/Pages/tours/dest2.html'">
-
-
-<!-- Ripple -->
-<span
-class="absolute top-1/2 left-1/2 w-0 h-0
-bg-black rounded-full
-transform -translate-x-1/2 -translate-y-1/2
-transition-all duration-500
-group-hover:w-[500px] group-hover:h-[500px]">
-</span>
-
-<!-- Left Arrow -->
-<svg
-viewBox="0 0 24 24"
-class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:left-6 group-hover:fill-white"
-xmlns="http://www.w3.org/2000/svg">
-<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
-</svg>
-
-<!-- Text -->
-<span
-class="relative z-10 transition-all duration-500 group-hover:text-white">
-Book This Trip
-</span>
-
-</button>
-
-</div>
-</div>
-
-
-<!-- Card 3 -->
-<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300">
-
-<figure>
-<img src="/images/assets/bali/bali-1.jpg"
-class="h-60 w-full object-cover">
-</figure>
-
-<div class="card-body text-black">
-
-<div class="flex justify-between items-center">
-<h2 class="card-title text-2xl font-bold">Bali, Indonesia</h2>
-<span class="text-yellow-400 font-semibold">₹2,50,000</span>
-</div>
-
-<p class="text-amber-400 font-bold text-sm">📍 Bali</p>
-
-<button
-class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
-bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
-rounded-lg font-semibold text-black overflow-hidden
-transition-all duration-500 group " onclick="location.href='/Pages/tours/dest3.html'">
-
-
-<!-- Ripple -->
-<span
-class="absolute top-1/2 left-1/2 w-0 h-0
-bg-black rounded-full
-transform -translate-x-1/2 -translate-y-1/2
-transition-all duration-500
-group-hover:w-[500px] group-hover:h-[500px]">
-</span>
-
-<!-- Left Arrow -->
-<svg
-viewBox="0 0 24 24"
-class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:left-6 group-hover:fill-white"
-xmlns="http://www.w3.org/2000/svg">
-<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
-</svg>
-
-<!-- Text -->
-<span
-class="relative z-10 transition-all duration-500 group-hover:text-white">
-Book This Trip
-</span>
-
-</button>
-
-</div>
-</div>
-
-
-<!-- Card 4 -->
-<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300">
-
-<figure>
-<img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f"
-class="h-60 w-full object-cover">
-</figure>
-
-<div class="card-body text-black">
-
-<div class="flex justify-between items-center">
-<h2 class="card-title text-2xl font-bold">Paris, France</h2>
-<span class="text-yellow-400 font-semibold">₹2,80,000</span>
-</div>
-
-<p class="text-amber-400 font-bold text-sm">📍 Paris, France</p>
-
-<button
-class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
-bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
-rounded-lg font-semibold text-black overflow-hidden
-transition-all duration-500 group " onclick="location.href='/Pages/tours/dest4.html'">
-
-
-<!-- Ripple -->
-<span
-class="absolute top-1/2 left-1/2 w-0 h-0
-bg-black rounded-full
-transform -translate-x-1/2 -translate-y-1/2
-transition-all duration-500
-group-hover:w-[500px] group-hover:h-[500px]">
-</span>
-
-<!-- Left Arrow -->
-<svg
-viewBox="0 0 24 24"
-class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:left-6 group-hover:fill-white"
-xmlns="http://www.w3.org/2000/svg">
-<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
-</svg>
-
-<!-- Text -->
-<span
-class="relative z-10 transition-all duration-500 group-hover:text-white">
-Book This Trip
-</span>
-
-</button>
-
-</div>
-</div>
-
-
-<!-- Card 5 -->
-<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300">
-
-<figure>
-<img src="https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e"
-class="h-60 w-full object-cover">
-</figure>
-
-<div class="card-body text-black">
-
-<div class="flex justify-between items-center">
-<h2 class="card-title text-2xl font-bold">Santorini, Greece</h2>
-<span class="text-yellow-400 font-semibold">₹2,90,000</span>
-</div>
-
-<p class="text-amber-400 font-bold text-sm">📍 Santorini, Greece</p>
-
-<button
-class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
-bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
-rounded-lg font-semibold text-black overflow-hidden
-transition-all duration-500 group " onclick="location.href='/Pages/tours/dest5.html'">
-
-
-<!-- Ripple -->
-<span
-class="absolute top-1/2 left-1/2 w-0 h-0
-bg-black rounded-full
-transform -translate-x-1/2 -translate-y-1/2
-transition-all duration-500
-group-hover:w-[500px] group-hover:h-[500px]">
-</span>
-
-<!-- Left Arrow -->
-<svg
-viewBox="0 0 24 24"
-class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:left-6 group-hover:fill-white"
-xmlns="http://www.w3.org/2000/svg">
-<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
-</svg>
-
-<!-- Text -->
-<span
-class="relative z-10 transition-all duration-500 group-hover:text-white">
-Book This Trip
-</span>
-
-</button>
-
-</div>
-</div>
-
-
-<!-- Card 6 -->
-<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300">
-
-<figure>
-<img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18"
-class="h-60 w-full object-cover">
-</figure>
-
-<div class="card-body text-black">
-
-<div class="flex justify-between items-center">
-<h2 class="card-title text-2xl font-bold">Malé, Maldives</h2>
-<span class="text-yellow-400 font-semibold">₹3,50,000</span>
-</div>
-
-<p class="text-amber-400 font-bold text-sm">📍 Maldives</p>
-
-<button
-class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
-bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
-rounded-lg font-semibold text-black overflow-hidden
-transition-all duration-500 group " onclick="location.href='/Pages/tours/dest6.html'">
-
-
-<!-- Ripple -->
-<span
-class="absolute top-1/2 left-1/2 w-0 h-0
-bg-black rounded-full
-transform -translate-x-1/2 -translate-y-1/2
-transition-all duration-500
-group-hover:w-[500px] group-hover:h-[500px]">
-</span>
-
-<!-- Left Arrow -->
-<svg
-viewBox="0 0 24 24"
-class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:left-6 group-hover:fill-white"
-xmlns="http://www.w3.org/2000/svg">
-<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
-</svg>
-
-<!-- Text -->
-<span
-class="relative z-10 transition-all duration-500 group-hover:text-white">
-Book This Trip
-</span>
-
-</button>
-
-</div>
-</div>
-
-
-<!-- Card 7 -->
-<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300">
-
-<figure>
-<img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9"
-class="h-60 w-full object-cover">
-</figure>
-
-<div class="card-body text-black">
-
-<div class="flex justify-between items-center">
-<h2 class="card-title text-2xl font-bold">New York, USA</h2>
-<span class="text-yellow-400 font-semibold">₹3,10,000</span>
-</div>
-
-<p class="text-amber-400 font-bold text-sm">📍 New York</p>
-
-<button
-class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
-bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
-rounded-lg font-semibold text-black overflow-hidden
-transition-all duration-500 group " onclick="location.href='/Pages/tours/dest7.html'">
-
-<!-- Ripple -->
-<span
-class="absolute top-1/2 left-1/2 w-0 h-0
-bg-black rounded-full
-transform -translate-x-1/2 -translate-y-1/2
-transition-all duration-500
-group-hover:w-[500px] group-hover:h-[500px]">
-</span>
-
-<!-- Left Arrow -->
-<svg
-viewBox="0 0 24 24"
-class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:left-6 group-hover:fill-white"
-xmlns="http://www.w3.org/2000/svg">
-<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
-</svg>
-
-<!-- Text -->
-<span
-class="relative z-10 transition-all duration-500 group-hover:text-white">
-Book This Trip
-</span>
-
-</button>
-
-</div>
-</div>
-
-
-<!-- Card 8 -->
-<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300">
-
-<figure>
-<img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5"
-class="h-60 w-full object-cover">
-</figure>
-
-<div class="card-body text-black">
-
-<div class="flex justify-between items-center">
-<h2 class="card-title text-2xl font-bold">Rome, Italy</h2>
-<span class="text-yellow-400 font-semibold">₹2,90,000</span>
-</div>
-
-<p class="text-amber-400 font-bold text-sm">📍 Rome, Italy</p>
-
-<button
-class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
-bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
-rounded-lg font-semibold text-black overflow-hidden
-transition-all duration-500 group " onclick="location.href='/Pages/tours/dest8.html'">
-
-<!-- Ripple -->
-<span
-class="absolute top-1/2 left-1/2 w-0 h-0
-bg-black rounded-full
-transform -translate-x-1/2 -translate-y-1/2
-transition-all duration-500
-group-hover:w-[500px] group-hover:h-[500px]">
-</span>
-
-<!-- Left Arrow -->
-<svg
-viewBox="0 0 24 24"
-class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:left-6 group-hover:fill-white"
-xmlns="http://www.w3.org/2000/svg">
-<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
-</svg>
-
-<!-- Text -->
-<span
-class="relative z-10 transition-all duration-500 group-hover:text-white">
-Book This Trip
-</span>
-
-</button>
-
-</div>
-</div>
-
-
-<!-- Card 9 -->
-<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300">
-
-<figure>
-<img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9"
-class="h-60 w-full object-cover">
-</figure>
-
-<div class="card-body text-black">
-
-<div class="flex justify-between items-center">
-<h2 class="card-title text-2xl font-bold">Sydney, Australia</h2>
-<span class="text-yellow-400 font-semibold">₹3,80,000</span>
-</div>
-
-<p class="text-amber-400 font-bold text-sm">📍 Sydney, Australia</p>
-
-<button
-class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
-bg-yellow-400/40 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/20
-rounded-lg font-semibold text-black overflow-hidden
-transition-all duration-500 group " onclick="location.href='/Pages/tours/dest9.html'">
-
-<!-- Ripple -->
-<span
-class="absolute top-1/2 left-1/2 w-0 h-0
-bg-black rounded-full
-transform -translate-x-1/2 -translate-y-1/2
-transition-all duration-500
-group-hover:w-[500px] group-hover:h-[500px]">
-</span>
-
-<!-- Left Arrow -->
-<svg
-viewBox="0 0 24 24"
-class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:left-6 group-hover:fill-white"
-xmlns="http://www.w3.org/2000/svg">
-<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
-</svg>
-
-<!-- Text -->
-<span
-class="relative z-10 transition-all duration-500 group-hover:text-white">
-Book This Trip
-</span>
-
-</button>
-
-</div>
-</div>
-
+<% }); %>
 
 </section>
+
+<!-- Quick Booking Modal -->
+<dialog id="quick_booking_modal" class="modal">
+  <div class="modal-box bg-white text-black text-left">
+    <h3 class="font-bold text-2xl mb-4 text-black">Express Booking</h3>
+    <form action="/api/bookings" method="POST" class="py-4 space-y-4">
+      <input type="hidden" name="destination" id="quick_modal_destination_name" value="">
+      <input type="hidden" name="amount" id="quick_modal_destination_amount" value="">
+      
+      <div>
+        <label class="block text-sm font-bold text-gray-700 mb-2">Destination</label>
+        <div class="px-4 py-3 bg-gray-100 rounded-md text-gray-600 font-semibold" id="quick_modal_display_name"></div>
+      </div>
+      
+      <div>
+        <label class="block text-sm font-bold text-gray-700 mb-2">Select Travel Date</label>
+        <input type="date" name="date" required class="block w-full rounded-md border border-gray-300 shadow-sm focus:border-yellow-400 focus:ring-yellow-400 bg-gray-50 text-black px-4 py-2">
+      </div>
+
+      <div>
+        <label class="block text-sm font-bold text-gray-700 mb-2">Number of Travelers</label>
+        <input type="number" name="travelers" min="1" value="1" required class="block w-full rounded-md border border-gray-300 shadow-sm focus:border-yellow-400 focus:ring-yellow-400 bg-gray-50 text-black px-4 py-2">
+      </div>
+      
+      <div class="modal-action mt-6">
+        <button type="submit" class="px-6 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:bg-black hover:text-white transition-all cursor-pointer">Submit Booking</button>
+        <button type="button" class="px-6 py-2 bg-gray-200 text-black font-bold rounded-lg hover:bg-gray-300 transition-all cursor-pointer" onclick="document.getElementById('quick_booking_modal').close()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</dialog>
+
+<script>
+function openQuickBooking(name, price) {
+    document.getElementById('quick_modal_destination_name').value = name;
+    document.getElementById('quick_modal_destination_amount').value = price;
+    document.getElementById('quick_modal_display_name').innerText = name + ' — ₹' + Number(price).toLocaleString('en-IN');
+    document.getElementById('quick_booking_modal').showModal();
+}
+</script>
 
 </body>
 </html>

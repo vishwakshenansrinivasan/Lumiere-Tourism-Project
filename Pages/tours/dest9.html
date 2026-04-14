@@ -69,14 +69,14 @@ Lumiere
 </ul>
 
 <!-- Login Button -->
-<button
-class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg
-hover:text-lg hover:bg-black hover:text-black transition-all duration-300"
-onclick="location.href='/Pages/login.html'">
+<% if (typeof user !== 'undefined' && user) { %>
+    <button class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:text-lg hover:bg-black hover:text-white transition-all duration-300 gap-2 flex items-center" onclick="location.href='/api/auth/logout'">Logout (<%= user.username %>)</button>
+<% } else if (typeof admin !== 'undefined' && admin) { %>
+    <button class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:text-lg hover:bg-black hover:text-white transition-all duration-300 gap-2 flex items-center" onclick="location.href='/api/auth/admin/logout'">Logout (Admin)</button>
+<% } else { %>
+    <button class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:text-lg hover:bg-black hover:text-white transition-all duration-300" onclick="location.href='/Pages/login.html'">Login</button>
+<% } %>
 
-Login
-
-</button>
 
 </div>
 
@@ -203,7 +203,7 @@ entrance tickets, and selected meals.
 class="relative w-full flex items-center justify-center gap-2 mt-4 px-6 py-3
 bg-black border-white/30 shadow-lg hover:shadow-white/20 hover:box
 rounded-lg font-semibold text-white overflow-hidden
-transition-all duration-700 group " onclick="location.href='/index.html'">
+transition-all duration-700 group " onclick="document.getElementById('booking_modal').showModal()">
 
 
 <!-- Ripple -->
@@ -240,6 +240,53 @@ Book This Trip
 </div>
 
 </section>
+
+
+<!-- Booking Modal -->
+<dialog id="booking_modal" class="modal">
+  <div class="modal-box bg-white text-black text-left">
+    <h3 class="font-bold text-2xl mb-4 text-black">Book Your Trip</h3>
+    <form action="/api/bookings" method="POST" class="py-4 space-y-4">
+      <input type="hidden" name="destination" id="modal_destination_name" value="">
+      <input type="hidden" name="amount" id="modal_destination_amount" value="">
+      
+      <div>
+        <label class="block text-sm font-bold text-gray-700 mb-2">Select Travel Date</label>
+        <input type="date" name="date" required class="block w-full rounded-md border-gray-300 shadow-sm focus:border-yellow-400 focus:ring-yellow-400 bg-gray-50 text-black px-4 py-2">
+      </div>
+
+      <div>
+        <label class="block text-sm font-bold text-gray-700 mb-2">Number of Travelers</label>
+        <input type="number" name="travelers" min="1" value="1" required class="block w-full rounded-md border-gray-300 shadow-sm focus:border-yellow-400 focus:ring-yellow-400 bg-gray-50 text-black px-4 py-2">
+      </div>
+      
+      <div class="modal-action mt-6">
+        <button type="submit" class="px-6 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:bg-black hover:text-white transition-all">Confirm Booking</button>
+        <button type="button" class="px-6 py-2 bg-gray-200 text-black font-bold rounded-lg hover:bg-gray-300 transition-all" onclick="document.getElementById('booking_modal').close()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</dialog>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+    let title = '';
+    const h1 = document.querySelector('h1');
+    if(h1) title = h1.innerText.trim();
+    
+    let amount = '0';
+    const priceDiv = document.querySelector('.text-yellow-400.text-2xl');
+    if(priceDiv) {
+        const matches = priceDiv.innerText.match(/[0-9]+/);
+        if(matches) amount = matches[0];
+    }
+    
+    const destInput = document.getElementById('modal_destination_name');
+    const amountInput = document.getElementById('modal_destination_amount');
+    if(destInput) destInput.value = title;
+    if(amountInput) amountInput.value = amount;
+});
+</script>
 
 </body>
 </html>

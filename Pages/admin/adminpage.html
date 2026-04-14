@@ -131,7 +131,7 @@
                 <div class="flex justify-between items-start">
                     <div>
                         <p class="text-gray-400 text-sm font-medium mb-1">Total Users</p>
-                        <h2 class="text-4xl font-bold text-white group-hover:text-sky-400 transition-colors">0</h2>
+                        <h2 class="text-4xl font-bold text-white group-hover:text-sky-400 transition-colors"><%= totalUsers %></h2>
                     </div>
                     <div class="p-3 bg-white/10 rounded-xl text-sky-400">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
@@ -144,7 +144,7 @@
                 <div class="flex justify-between items-start">
                     <div>
                         <p class="text-gray-400 text-sm font-medium mb-1">Total Bookings</p>
-                        <h2 class="text-4xl font-bold text-white group-hover:text-yellow-400 transition-colors">0</h2>
+                        <h2 class="text-4xl font-bold text-white group-hover:text-yellow-400 transition-colors"><%= totalBookings %></h2>
                     </div>
                     <div class="p-3 bg-white/10 rounded-xl text-yellow-400">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -157,7 +157,7 @@
                 <div class="flex justify-between items-start">
                     <div>
                         <p class="text-gray-400 text-sm font-medium mb-1">Total Revenue</p>
-                        <h2 class="text-4xl font-bold text-white group-hover:text-emerald-400 transition-colors">$0</h2>
+                        <h2 class="text-4xl font-bold text-white group-hover:text-emerald-400 transition-colors">$<%= totalRevenue %></h2>
                     </div>
                     <div class="p-3 bg-white/10 rounded-xl text-emerald-400">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -170,7 +170,7 @@
                 <div class="flex justify-between items-start">
                     <div>
                         <p class="text-gray-400 text-sm font-medium mb-1">Pending Actions</p>
-                        <h2 class="text-4xl font-bold text-white group-hover:text-rose-400 transition-colors">0</h2>
+                        <h2 class="text-4xl font-bold text-white group-hover:text-rose-400 transition-colors"><%= bookings.filter(b => b.status === 'pending').length %></h2>
                     </div>
                     <div class="p-3 bg-white/10 rounded-xl text-rose-400">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
@@ -199,46 +199,45 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <% bookings.forEach(function(booking) { %>
                                 <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
                                     <td class="bg-transparent py-4 px-6 font-semibold flex items-center gap-3">
-                                        <div class="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs font-bold ring-1 ring-indigo-500/50">JD</div>
-                                        vishwakshenan
+                                        <div class="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-xs font-bold ring-1 ring-indigo-500/50">#<%= booking.user_id %></div>
+                                        User #<%= booking.user_id %>
                                     </td>
-                                    <td class="bg-transparent py-4 px-6">Kyoto, Japan</td>
-                                    <td class="bg-transparent py-4 px-6">$2,500</td>
-                                    <td class="bg-transparent py-4 px-6"><span class="text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded-md text-xs font-bold border border-emerald-500/20">Confirmed</span></td>
-                                    <td class="bg-transparent py-4 px-6 text-right"><button class="text-yellow-400 hover:text-yellow-300 text-sm font-bold tracking-wider">Manage</button></td>
-                                </tr>
-                                <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                    <td class="bg-transparent py-4 px-6 font-semibold flex items-center gap-3">
-                                        <div class="w-8 h-8 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-bold ring-1 ring-rose-500/50">SM</div>
-                                        jishnu priyan
+                                    <td class="bg-transparent py-4 px-6"><%= booking.destination %></td>
+                                    <td class="bg-transparent py-4 px-6">$<%= booking.amount %></td>
+                                    <td class="bg-transparent py-4 px-6">
+                                        <% if (booking.status === 'pending') { %>
+                                            <span class="text-yellow-400 bg-yellow-400/10 px-2 py-1 rounded-md text-xs font-bold border border-yellow-500/20"><%= booking.status %></span>
+                                        <% } else if (booking.status === 'confirmed') { %>
+                                            <span class="text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded-md text-xs font-bold border border-emerald-500/20"><%= booking.status %></span>
+                                        <% } else { %>
+                                            <span class="text-rose-400 bg-rose-400/10 px-2 py-1 rounded-md text-xs font-bold border border-rose-500/20"><%= booking.status %></span>
+                                        <% } %>
+
                                     </td>
-                                    <td class="bg-transparent py-4 px-6">Swiss Alps</td>
-                                    <td class="bg-transparent py-4 px-6">$3,200</td>
-                                    <td class="bg-transparent py-4 px-6"><span class="text-yellow-400 bg-yellow-400/10 px-2 py-1 rounded-md text-xs font-bold border border-yellow-500/20">Pending</span></td>
-                                    <td class="bg-transparent py-4 px-6 text-right"><button class="text-yellow-400 hover:text-yellow-300 text-sm font-bold tracking-wider">Manage</button></td>
-                                </tr>
-                                <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                    <td class="bg-transparent py-4 px-6 font-semibold flex items-center gap-3">
-                                        <div class="w-8 h-8 rounded-full bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-bold ring-1 ring-sky-500/50">EW</div>
-                                        Emma Watson
+                                    <td class="bg-transparent py-4 px-6 text-right">
+                                        <% if (booking.status === 'pending') { %>
+                                            <div class="flex items-center justify-end gap-3">
+                                                <form method="POST" action="/api/admin/bookings/<%= booking.BookingNum %>/confirm" class="inline m-0 p-0">
+                                                    <button type="submit" class="text-emerald-400 hover:text-emerald-300 text-xs font-bold tracking-wider uppercase">Approve</button>
+                                                </form>
+                                                <form method="POST" action="/api/admin/bookings/<%= booking.BookingNum %>/cancel" class="inline m-0 p-0">
+                                                    <button type="submit" class="text-rose-400 hover:text-rose-300 text-xs font-bold tracking-wider uppercase">Cancel</button>
+                                                </form>
+                                            </div>
+                                        <% } else { %>
+                                            <span class="text-gray-500 text-xs font-bold tracking-wider uppercase">Processed</span>
+                                        <% } %>
                                     </td>
-                                    <td class="bg-transparent py-4 px-6">Bali, Indonesia</td>
-                                    <td class="bg-transparent py-4 px-6">$1,800</td>
-                                    <td class="bg-transparent py-4 px-6"><span class="text-red-400 bg-red-400/10 px-2 py-1 rounded-md text-xs font-bold border border-red-600/50">Cancelled</span></td>
-                                    <td class="bg-transparent py-4 px-6 text-right"><button class="text-yellow-400 hover:text-yellow-300 text-sm font-bold tracking-wider">Manage</button></td>
                                 </tr>
-                                <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                    <td class="bg-transparent py-4 px-6 font-semibold flex items-center gap-3">
-                                        <div class="w-8 h-8 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-bold ring-1 ring-rose-500/50">MJ</div>
-                                        Monish kumar
-                                    </td>
-                                    <td class="bg-transparent py-4 px-6">New York, USA</td>
-                                    <td class="bg-transparent py-4 px-6">$2,200</td>
-                                    <td class="bg-transparent py-4 px-6"><span class="text-yellow-400 bg-yellow-400/10 px-2 py-1 rounded-md text-xs font-bold border border-yellow-500/20">Pending</span></td>
-                                    <td class="bg-transparent py-4 px-6 text-right"><button class="text-yellow-400 hover:text-yellow-300 text-sm font-bold tracking-wider">Manage</button></td>
+                                <% }); %>
+                                <% if(bookings.length === 0) { %>
+                                <tr>
+                                    <td colspan="5" class="text-center py-6 text-gray-500">No bookings yet.</td>
                                 </tr>
+                                <% } %>
                             </tbody>
                         </table>
                     </div>
@@ -251,7 +250,7 @@
                 
                 <!-- Action Buttons -->
                 <div class="glass-panel p-6 rounded-3xl flex flex-col gap-4">
-                    <button class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/10 transition-colors border border-white/5 hover:border-white/20 group w-full text-left cursor-pointer">
+                    <button class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/10 transition-colors border border-white/5 hover:border-white/20 group w-full text-left cursor-pointer" onclick="document.getElementById('add_tour_modal').showModal()">
                         <div class="bg-emerald-400/20 text-emerald-400 p-3 rounded-full group-hover:scale-110 transition-transform">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
                         </div>
@@ -260,6 +259,44 @@
                             <p class="text-xs text-gray-400">Create a new destination</p>
                         </div>
                     </button>
+                    
+                    <!-- Admin Add Tour Modal -->
+                    <dialog id="add_tour_modal" class="modal">
+                      <div class="modal-box bg-gray-900 border border-white/10 text-white text-left max-w-lg shadow-2xl backdrop-blur-xl">
+                        <h3 class="font-bold text-2xl mb-6 text-white playfair border-b border-white/10 pb-4">Add New Tour</h3>
+                        
+                        <form action="/api/admin/destinations" method="POST" class="space-y-5">
+                          <div>
+                            <label class="block text-sm font-bold text-gray-400 mb-2">Tour Name</label>
+                            <input type="text" name="name" placeholder="e.g. Kyoto, Japan" required class="block w-full rounded-lg border border-white/10 bg-white/5 text-white px-4 py-3 focus:border-yellow-400 focus:ring-yellow-400 placeholder-gray-600">
+                          </div>
+
+                          <div>
+                            <label class="block text-sm font-bold text-gray-400 mb-2">Location String</label>
+                            <input type="text" name="location" placeholder="e.g. Kyoto" required class="block w-full rounded-lg border border-white/10 bg-white/5 text-white px-4 py-3 focus:border-yellow-400 focus:ring-yellow-400 placeholder-gray-600">
+                          </div>
+                          
+                          <div>
+                            <label class="block text-sm font-bold text-gray-400 mb-2">Base Price (INR)</label>
+                            <input type="number" name="price" placeholder="e.g. 350000" min="0" required class="block w-full rounded-lg border border-white/10 bg-white/5 text-white px-4 py-3 focus:border-yellow-400 focus:ring-yellow-400 placeholder-gray-600">
+                          </div>
+
+                          <div>
+                            <label class="block text-sm font-bold text-gray-400 mb-2">Cover Image URL</label>
+                            <input type="url" name="image_url" placeholder="https://images.unsplash.com/photo-..." required class="block w-full rounded-lg border border-white/10 bg-white/5 text-white px-4 py-3 focus:border-yellow-400 focus:ring-yellow-400 placeholder-gray-600">
+                            <p class="text-xs text-gray-500 mt-2">Paste a valid image link (Unsplash recommended)</p>
+                          </div>
+                          
+                          <div class="modal-action mt-8 pt-4 border-t border-white/10 border-dashed">
+                            <button type="submit" class="px-6 py-2 bg-yellow-400 text-black font-bold tracking-wider rounded-lg hover:bg-yellow-300 transition-all cursor-pointer shadow-[0_0_15px_rgba(250,204,21,0.4)]">Create Tour</button>
+                            <button type="button" class="px-6 py-2 bg-white/10 border border-white/20 text-white font-bold rounded-lg hover:bg-white/20 transition-all cursor-pointer" onclick="document.getElementById('add_tour_modal').close()">Cancel</button>
+                          </div>
+                        </form>
+                      </div>
+                      <form method="dialog" class="modal-backdrop bg-black/60 backdrop-blur-sm">
+                        <button class="cursor-default">close</button>
+                      </form>
+                    </dialog>
 
                     <button class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/10 transition-colors border border-white/5 hover:border-white/20 group w-full text-left cursor-pointer">
                         <div class="bg-indigo-400/20 text-indigo-400 p-3 rounded-full group-hover:scale-110 transition-transform">

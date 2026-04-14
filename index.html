@@ -57,14 +57,14 @@ Lumiere
 </ul>
 
 <!-- Login Button -->
-<button
-class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg
-hover:text-lg hover:bg-black hover:text-white transition-all duration-300"
-onclick="location.href='/Pages/login.html'">
+<% if (typeof user !== 'undefined' && user) { %>
+    <button class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:text-lg hover:bg-black hover:text-white transition-all duration-300 gap-2 flex items-center" onclick="location.href='/api/auth/logout'">Logout (<%= user.username %>)</button>
+<% } else if (typeof admin !== 'undefined' && admin) { %>
+    <button class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:text-lg hover:bg-black hover:text-white transition-all duration-300 gap-2 flex items-center" onclick="location.href='/api/auth/admin/logout'">Logout (Admin)</button>
+<% } else { %>
+    <button class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:text-lg hover:bg-black hover:text-white transition-all duration-300" onclick="location.href='/Pages/login.html'">Login</button>
+<% } %>
 
-Login
-
-</button>
 
 </div>
 

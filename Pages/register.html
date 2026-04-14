@@ -38,14 +38,14 @@ Lumiere
 </ul>
 
 <!-- Login Button -->
-<button
-class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg
-hover:text-lg hover:bg-black hover:text-white transition-all duration-300"
-onclick="location.href='/index.html'">
+<% if (typeof user !== 'undefined' && user) { %>
+    <button class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:text-lg hover:bg-black hover:text-white transition-all duration-300 gap-2 flex items-center" onclick="location.href='/api/auth/logout'">Logout (<%= user.username %>)</button>
+<% } else if (typeof admin !== 'undefined' && admin) { %>
+    <button class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:text-lg hover:bg-black hover:text-white transition-all duration-300 gap-2 flex items-center" onclick="location.href='/api/auth/admin/logout'">Logout (Admin)</button>
+<% } else { %>
+    <button class="px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:text-lg hover:bg-black hover:text-white transition-all duration-300" onclick="location.href='/Pages/login.html'">Login</button>
+<% } %>
 
-Exit
-
-</button>
 
 </div>
 
@@ -80,7 +80,7 @@ Exit
         </div>
 
         <div class="flex items-center lg:p-12 p-8 bg-[#0C172C] h-full lg:w-11/12 lg:ml-auto">
-          <form class="max-w-lg w-full mx-auto">
+          <form action="/api/auth/register" method="POST" class="max-w-lg w-full mx-auto">
             <div class="mb-12">
               <h1 class="text-3xl font-semibold text-purple-400">Create an account</h1>
             </div>
@@ -88,7 +88,7 @@ Exit
             <div>
               <label class="text-white text-xs block mb-2">Full Name</label>
               <div class="relative flex items-center">
-                <input name="name" type="text" required class="w-full bg-transparent text-sm text-white border-b border-slate-500 focus:border-white pl-2 pr-8 py-3 outline-none" placeholder="Enter name" />
+                <input name="username" type="text" required class="w-full bg-transparent text-sm text-white border-b border-slate-500 focus:border-white pl-2 pr-8 py-3 outline-none" placeholder="Enter name" />
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-[18px] h-[18px] absolute right-2" viewBox="0 0 24 24">
                   <circle cx="10" cy="7" r="6" data-original="#000000"></circle>
                   <path d="M14 15H6a5 5 0 0 0-5 5 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 5 5 0 0 0-5-5zm8-4h-2.59l.3-.29a1 1 0 0 0-1.42-1.42l-2 2a1 1 0 0 0 0 1.42l2 2a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42l-.3-.29H22a1 1 0 0 0 0-2z" data-original="#000000"></path>
@@ -98,7 +98,7 @@ Exit
             <div class="mt-8">
               <label class="text-white text-xs block mb-2">Email</label>
               <div class="relative flex items-center">
-                <input name="email" type="text" required class="w-full bg-transparent text-sm text-white border-b border-slate-500 focus:border-white pl-2 pr-8 py-3 outline-none" placeholder="Enter email" />
+                <input name="email" type="email" required class="w-full bg-transparent text-sm text-white border-b border-slate-500 focus:border-white pl-2 pr-8 py-3 outline-none" placeholder="Enter email" />
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-[18px] h-[18px] absolute right-2" viewBox="0 0 682.667 682.667">
                   <defs>
                     <clipPath id="a" clipPathUnits="userSpaceOnUse">
@@ -124,7 +124,7 @@ Exit
             
             
             <div class="mt-8">
-              <button type="button" class="w-max shadow-xl py-3 px-6 min-w-32 text-sm text-white font-medium rounded-sm bg-purple-600 hover:bg-purple-500 focus:outline-none cursor-pointer">
+              <button type="submit" class="w-max shadow-xl py-3 px-6 min-w-32 text-sm text-white font-medium rounded-sm bg-purple-600 hover:bg-purple-500 focus:outline-none cursor-pointer">
                 Register
               </button>
               <p class="text-sm text-slate-300 mt-8">Already have an account? <a href="/Pages/login.html" class="text-purple-400 font-medium hover:underline ml-1">Login here</a></p>

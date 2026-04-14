@@ -68,6 +68,10 @@
                 <li><a href="/Pages/dashboard.html" class="px-4 py-2 bg-amber-50 text-amber-600 font-bold rounded-xl active">Dashboard</a></li>
                 <li><a href="/Pages/tours.html" class="px-4 py-2 hover:bg-gray-100 hover:text-amber-600 rounded-xl transition-all">Tours</a></li>
                 <li><a href="/Pages/contact.html" class="px-4 py-2 hover:bg-gray-100 hover:text-amber-600 rounded-xl transition-all">Contact</a></li>
+                <li><a href="/api/auth/logout" class="px-4 py-2 ml-2 bg-red-50 text-red-600 font-bold rounded-xl hover:bg-red-100 transition-all shadow-sm border border-red-100 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/><path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/></svg>
+                    Logout
+                </a></li>
             </ul>
         </div>
         
@@ -81,6 +85,8 @@
                 <li><a href="/Pages/dashboard.html" class="text-amber-600 font-bold">Dashboard</a></li>
                 <li><a href="/Pages/tours.html">Tours</a></li>
                 <li><a href="/Pages/contact.html">Contact</a></li>
+                <li><hr class="my-1 border-gray-200"></li>
+                <li><a href="/api/auth/logout" class="text-red-500 font-bold hover:bg-red-50 hover:text-red-600 transition-colors">Logout</a></li>
             </ul>
         </div>
     </div>
@@ -127,7 +133,7 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="font-bold text-gray-900">John Doe</h3>
+                    <h3 class="font-bold text-gray-900"><%= user.username %></h3>
                     <p class="text-xs text-gray-500 font-medium">Explorer</p>
                 </div>
             </div>
@@ -140,7 +146,7 @@
                 <div class="flex justify-between items-start">
                     <div>
                         <p class="text-gray-500 text-sm font-semibold mb-1">Total Bookings</p>
-                        <h2 class="text-4xl font-extrabold text-gray-900 group-hover:text-amber-500 transition-colors">12</h2>
+                        <h2 class="text-4xl font-extrabold text-gray-900 group-hover:text-amber-500 transition-colors"><%= bookings.length %></h2>
                     </div>
                     <div class="p-3 bg-amber-100 rounded-xl text-amber-500">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -153,7 +159,7 @@
                 <div class="flex justify-between items-start">
                     <div>
                         <p class="text-gray-500 text-sm font-semibold mb-1">Upcoming Tours</p>
-                        <h2 class="text-4xl font-extrabold text-gray-900 group-hover:text-emerald-500 transition-colors">1</h2>
+                        <h2 class="text-4xl font-extrabold text-gray-900 group-hover:text-emerald-500 transition-colors"><%= bookings.filter(b => new Date(b.travel_date) >= new Date()).length %></h2>
                     </div>
                     <div class="p-3 bg-emerald-100 rounded-xl text-emerald-500">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
@@ -183,18 +189,35 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <% bookings.forEach(function(booking) { %>
                                 <tr class="border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
-                                    <td class="bg-transparent py-4 px-6 font-bold text-gray-900">Swiss Alps</td>
-                                    <td class="bg-transparent py-4 px-6 text-gray-600">Dec 01, 2025</td>
-                                    <td class="bg-transparent py-4 px-6"><span class="text-gray-600 bg-gray-100 border border-gray-200 px-3 py-1 rounded-lg text-xs font-medium">Completed</span></td>
-                                    <td class="bg-transparent py-4 px-6 text-right"><a href="#" class="text-amber-500 hover:text-amber-600 text-sm uppercase font-bold tracking-wider">Review</a></td>
+                                    <td class="bg-transparent py-4 px-6 font-bold text-gray-900"><%= booking.destination %></td>
+                                    <td class="bg-transparent py-4 px-6 text-gray-600"><%= new Date(booking.travel_date).toLocaleDateString() %></td>
+                                    <td class="bg-transparent py-4 px-6">
+                                        <% if (booking.status === 'pending') { %>
+                                            <span class="text-yellow-400 bg-yellow-400/10 px-2 py-1 rounded-md text-xs font-bold border border-yellow-500/20"><%= booking.status %></span>
+                                        <% } else if (booking.status === 'confirmed') { %>
+                                            <span class="text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded-md text-xs font-bold border border-emerald-500/20"><%= booking.status %></span>
+                                        <% } else { %>
+                                            <span class="text-rose-400 bg-rose-400/10 px-2 py-1 rounded-md text-xs font-bold border border-rose-500/20"><%= booking.status %></span>
+                                        <% } %>
+                                    </td>
+                                    <td class="bg-transparent py-4 px-6 text-right">
+                                        <% if (booking.status === 'pending' || booking.status === 'confirmed') { %>
+                                            <form method="POST" action="/api/bookings/<%= booking.BookingNum %>/cancel" class="inline m-0 p-0">
+                                                <button type="submit" class="text-red-500 hover:text-red-600 text-sm uppercase font-bold tracking-wider cursor-pointer">Cancel</button>
+                                            </form>
+                                        <% } else { %>
+                                            <span class="text-gray-400 text-sm uppercase font-bold tracking-wider">Cancelled</span>
+                                        <% } %>
+                                    </td>
                                 </tr>
-                                <tr class="border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
-                                    <td class="bg-transparent py-4 px-6 font-bold text-gray-900">Bali, Indonesia</td>
-                                    <td class="bg-transparent py-4 px-6 text-gray-600">Apr 12, 2025</td>
-                                    <td class="bg-transparent py-4 px-6"><span class="text-gray-600 bg-gray-100 border border-gray-200 px-3 py-1 rounded-lg text-xs font-medium">Completed</span></td>
-                                    <td class="bg-transparent py-4 px-6 text-right"><a href="#" class="text-amber-500 hover:text-amber-600 text-sm uppercase font-bold tracking-wider">Review</a></td>
+                                <% }); %>
+                                <% if(bookings.length === 0) { %>
+                                <tr>
+                                    <td colspan="4" class="text-center py-4 text-gray-500">No bookings found. <a href="/Pages/tours.html" class="text-amber-500">Explore tours</a></td>
                                 </tr>
+                                <% } %>
                             </tbody>
                         </table>
                     </div>
