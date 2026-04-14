@@ -106,23 +106,22 @@ Discover the world's most enchanting places, curated for the modern explorer.
 
 
 <!-- Destinations Grid -->
+ <!-- Dynamic Card -->
 <section class="grid md:grid-cols-3 gap-10 px-16 pb-20">
 
 <% destinations.forEach(function(dest) { %>
-<!-- Dynamic Card -->
-<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300 flex flex-col h-full">
+
+<div class="card bg-white/10 border border-white/20 shadow-xl rounded-2xl overflow-hidden hover:scale-105 hover:shadow-2xl hover:-translate-y-2 
+hover:shadow-yellow-400/20 hover:border-yellow-400 transition duration-300 flex flex-col h-full">
 
     <figure class="flex-shrink-0">
         <img src="<%= dest.image_url %>" class="h-60 w-full object-cover">
     </figure>
-    
     <div class="card-body text-black flex flex-col flex-grow">
-    
         <div class="flex justify-between items-start gap-4">
             <h2 class="card-title text-2xl font-bold leading-tight"><%= dest.name %></h2>
             <span class="text-yellow-400 font-bold whitespace-nowrap text-lg">₹<%= Number(dest.price).toLocaleString('en-IN') %></span>
         </div>
-        
         <p class="text-amber-400 font-bold text-sm mt-2 flex-grow">📍 <%= dest.location %></p>
         
         <% if (dest.dest_url === '#') { %>
@@ -139,15 +138,11 @@ Discover the world's most enchanting places, curated for the modern explorer.
                 onclick="location.href='<%= dest.dest_url %>'">
         <% } %>
         
-            <!-- Ripple -->
             <span class="absolute top-1/2 left-1/2 w-0 h-0 bg-black rounded-full transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 group-hover:w-[500px] group-hover:h-[500px]"></span>
             
-            <!-- Left Arrow -->
             <svg viewBox="0 0 24 24" class="absolute w-5 fill-white transition-all duration-500 left-4 group-hover:left-6 group-hover:fill-white" xmlns="http://www.w3.org/2000/svg">
                 <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
             </svg>
-            
-            <!-- Text -->
             <span class="relative z-10 transition-all duration-500 group-hover:text-white">Book This Trip</span>
         </button>
     </div>
