@@ -8,22 +8,18 @@ require('dotenv').config();
 
 const app = express();
 
-// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// Serve static assets first (skip .html files so EJS catches them)
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/styles', express.static(path.join(__dirname, 'styles')));
 app.use('/src', express.static(path.join(__dirname, 'src')));
 
-// Configure EJS with html files
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname);
 
-// --- Auth Middleware ---
 const authenticateUser = async (req, res, next) => {
     const token = req.cookies.token;
     if (!token) return res.redirect('/Pages/login.html');
@@ -53,7 +49,6 @@ const authenticateAdmin = async (req, res, next) => {
     }
 };
 
-// Global Auth Extractor (Non-blocking)
 const extractAuthOptional = (req, res, next) => {
     req.userAuth = null;
     req.adminAuth = null;
@@ -69,13 +64,10 @@ const extractAuthOptional = (req, res, next) => {
 
 app.use(extractAuthOptional);
 
-// --- Page Routes ---
-
 app.get('/', (req, res) => {
     res.render(path.join(__dirname, 'index.html'), { user: req.userAuth, admin: req.adminAuth });
 });
 
-// Protect user dashboard
 app.get('/Pages/dashboard.html', authenticateUser, async (req, res) => {
     try {
         const [bookings] = await db.query(`
@@ -99,7 +91,6 @@ app.get('/Pages/dashboard.html', authenticateUser, async (req, res) => {
     }
 });
 
-// Protect admin page
 app.get('/Pages/admin/adminpage.html', authenticateAdmin, async (req, res) => {
     try {
         const [users] = await db.query('SELECT COUNT(*) as count FROM users');
@@ -132,7 +123,6 @@ app.get('/Pages/admin/adminpage.html', authenticateAdmin, async (req, res) => {
     }
 });
 
-// Render Dynamic Tours Catalog
 app.get('/Pages/tours.html', async (req, res) => {
     try {
         const [destinations] = await db.query('SELECT * FROM destinations ORDER BY destination_id ASC');
@@ -143,7 +133,6 @@ app.get('/Pages/tours.html', async (req, res) => {
     }
 });
 
-// Catch-all for HTML files to render EJS tags (Dynamic Navbar)
 app.get(/\.html$/, (req, res, next) => {
     const filePath = path.join(__dirname, req.path);
     res.render(filePath, { user: req.userAuth, admin: req.adminAuth }, (err, html) => {
@@ -155,9 +144,6 @@ app.get(/\.html$/, (req, res, next) => {
     });
 });
 
-// --- API Routes ---
-
-// API Logouts
 app.get('/api/auth/logout', (req, res) => {
     res.clearCookie('token');
     res.redirect('/');
@@ -168,7 +154,6 @@ app.get('/api/auth/admin/logout', (req, res) => {
     res.redirect('/');
 });
 
-// User Registration
 app.post('/api/auth/register', async (req, res) => {
     try {
         const { username, email, password } = req.body;
@@ -185,7 +170,6 @@ app.post('/api/auth/register', async (req, res) => {
     }
 });
 
-// User Login
 app.post('/api/auth/login', async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -195,7 +179,7 @@ app.post('/api/auth/login', async (req, res) => {
         if (!user) return res.status(400).send('Invalid credentials');
         
         const validPassword = await bcrypt.compare(password, user.password);
-        if (!validPassword && password !== user.password) { // fallback to clear text if they inserted manually
+        if (!validPassword && password !== user.password) {
             return res.status(400).send('Invalid credentials');
         }
         
@@ -209,7 +193,6 @@ app.post('/api/auth/login', async (req, res) => {
     }
 });
 
-// Admin Login
 app.post('/api/auth/admin/login', async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -239,7 +222,6 @@ app.post('/api/auth/admin/login', async (req, res) => {
     }
 });
 
-// Book a trip
 app.post('/api/bookings', authenticateUser, async (req, res) => {
     try {
         const { destination, amount, date, travelers } = req.body;
@@ -253,7 +235,6 @@ app.post('/api/bookings', authenticateUser, async (req, res) => {
         if (dests.length > 0) {
             destId = dests[0].destination_id;
         } else {
-            // Automatically populate destination if it's missing in DB
             const [result] = await db.query('INSERT INTO destinations (name, price) VALUES (?, ?)', [destination, Number(parsedAmount)]);
             destId = result.insertId;
         }
@@ -317,11 +298,10 @@ app.post('/api/admin/destinations', authenticateAdmin, async (req, res) => {
         res.redirect('/Pages/admin/adminpage.html');
     } catch (e) {
         console.error(e);
-        res.status(500).send('Error adding course: ' + e.message);
+        res.status(500).send('Error adding destination: ' + e.message);
     }
 });
 
-// Fallback to static files
 app.use(express.static(__dirname));
 
 const PORT = process.env.PORT || 5000;
