@@ -34,14 +34,14 @@
 
 **✈️ Flight Button**
 
-<video src="/images/flight-button-demo.mp4" controls autoplay loop muted width="340"></video>
+<video src="https://github.com/user-attachments/assets/30d2becb-6617-4d2e-8ccb-ae9770ba2062" controls autoplay loop muted width="340"></video>
 
 </td>
 <td align="center" width="50%">
 
 **📬 Contact Button**
 
-<video src="/images/contact-button-demo.mp4" controls autoplay loop muted width="340"></video>
+<video src="https://github.com/user-attachments/assets/5c8ec3e0-f68b-4db8-a048-ebe38d491238" controls autoplay loop muted width="340"></video>
 
 </td>
 </tr>
