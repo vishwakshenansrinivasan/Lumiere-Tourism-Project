@@ -24,6 +24,33 @@
 
 ---
 
+## ✈️ Demo
+
+<div align="center">
+
+<table>
+<tr>
+<td align="center" width="50%">
+
+**✈️ Flight Button**
+
+<video src="/images/flight-button-demo.mp4" controls autoplay loop muted width="340"></video>
+
+</td>
+<td align="center" width="50%">
+
+**📬 Contact Button**
+
+<video src="/images/contact-button-demo.mp4" controls autoplay loop muted width="340"></video>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+---
+
 ## 🌍 What is Lumiere?
 
 **Lumiere** is a full-stack, database-driven **travel booking & tours management system**. Users can explore beautiful destinations, make bookings, and manage their trips — all from a sleek, modern interface. Admins get a powerful dashboard to control bookings, users, and the destination catalog in real time.
