@@ -217,11 +217,12 @@ node index.js
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Authors & Collaborators
 
 <div align="center">
 
-**Skull** · [@SkullGAMERSS](https://github.com/SkullGAMERSS)
+**Vishwakshenan Srinivasan** · [@vishwakshenansrinivasan](https://github.com/vishwakshenansrinivasan)
+**Jishnu Priyan** . [@rdjishnu](https://github.com/rdjishnu).
 
 *Built with ❤️ and a lot of ☕*
 
